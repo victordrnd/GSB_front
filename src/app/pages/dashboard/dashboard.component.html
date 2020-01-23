@@ -1,0 +1,9 @@
+
+<div class="px-5">
+    <h2>Activité récente</h2>
+</div>
+
+<div class="bg-white position-fixed shadow right-overlay p-3" >
+    <h5>Calendrier</h5>
+    <nz-calendar [(ngModel)]="selectedValue" (nzSelectChange)="selectChange($event)"></nz-calendar>
+</div>

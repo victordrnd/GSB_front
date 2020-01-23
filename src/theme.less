@@ -681,3 +681,48 @@
 // ---
 @typography-title-font-weight: 600;
 
+@import "../node_modules/ng-zorro-antd/ng-zorro-antd.less";
+
+// -------- override less var -----------
+
+.ant-slider-track {
+    background-color: #d8a86485;
+}
+
+.ant-slider-handle {
+    background-color: #ffffff85;
+    border: solid 2px #d8a86485;
+}
+
+.active {
+    color : @primary-color !important;
+}
+
+.ant-layout {
+     background-color: #daebff !important;
+}
+
+.ant-table-thead > tr > th, .ant-table-tbody > tr > td {
+    background-color: #fff !important;
+}
+.ant-modal-confirm-info .ant-modal-confirm-body > .anticon {
+    color: #d8a864 !important;
+}
+
+.cursor{
+    cursor: pointer;
+}
+
+.primary-button{
+    color: #d8a864 !important;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    display: none;
+  }
+
+
+*{
+    outline:none;
+    font-family: "Product Sans";
+}
