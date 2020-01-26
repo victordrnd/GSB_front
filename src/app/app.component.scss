@@ -1,8 +1,12 @@
 .ant-layout-sider {
-    flex: 0 0 100 !important;
-    max-width: 100px!important;
-    min-width: 100px!important;
-    width: 100px!important;
-    background-color: #daebff;
+    flex: 0 0 70 !important;
+    max-width: 70px!important;
+    min-width: 70px!important;
+    width: 70px!important;
+    //background-color: #daebff;
+    background-color: #fff;
 }
 
+.top-container{
+    min-height: 100vh;
+}

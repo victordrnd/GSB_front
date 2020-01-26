@@ -1,11 +1,11 @@
-<nz-layout>
-  <app-header></app-header>
-  <nz-layout>
-      <nz-sider>
-          <app-sidebar></app-sidebar>
-      </nz-sider>
-      <nz-content>
-          <div class="row mx-0  mt-5 p-0">
+<nz-layout class="top-container">
+    <nz-sider>
+        <app-sidebar></app-sidebar>
+    </nz-sider>
+    <nz-layout>
+        <app-header></app-header>
+        <nz-content>
+            <!-- <div class="row mx-0  mt-5 p-0">
               <div class="col offset-1 p-0 p-md">
                   <nz-breadcrumb [nzAutoGenerate]="true">
                       <nz-breadcrumb-item>
@@ -13,10 +13,10 @@
                       </nz-breadcrumb-item>
                   </nz-breadcrumb>
               </div>
-          </div>
-          <div class="mx-5">
-            <router-outlet></router-outlet>
-          </div>
-      </nz-content>
-  </nz-layout>
+          </div> -->
+            <div class="mx-5">
+                <router-outlet></router-outlet>
+            </div>
+        </nz-content>
+    </nz-layout>
 </nz-layout>

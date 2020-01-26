@@ -1,24 +1,24 @@
 .top-menu {
-  width: 100px;
+  width: 69px;
   height: calc(50vh - 150px);
   min-height: 5vh;
   border-top-right-radius: 50px;
 
-  background-color: #fff;
+  background-color: #9b89ff;
 }
 .bottom-menu {
-    width: 100px;
+    width: 69px;
     height: calc(50vh - 150px);
     min-height: 5vh;
     border-bottom-right-radius: 50px;
-    background-color: #fff;
+    background-color: #9b89ff;
   }
 
 .ant-layout-sider {
   position: relative;
   min-width: 0;
-  background: #fff;
-  width: 100px !important;
+  background: #9b89ff;
+  width: 69px !important;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
 }
@@ -38,9 +38,7 @@ ul {
     text-align: center;
     height: 300px;
     align-items: center;
-    background-color: #daebff;
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
+    background-color: #9b89ff;
 }
 
 
@@ -49,9 +47,10 @@ li{
     padding-left:10px !important;
     margin-top:0px !important;
     margin-bottom: 0px !important;
-    background-color: #fff;
+    //background-color: #9b89ff;
     line-height: 60px;
     min-height:60px;
+    color:#fff;
 }
 
 .ant-menu-item{

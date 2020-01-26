@@ -1,7 +1,7 @@
-<div class="top-menu shadow-sm">
+<div class="top-menu shadow-sm" *ngIf="router.url != '/'">
 
 </div>
-<ul nz-menu nzMode="inline" class="shadow-sm">
+<ul nz-menu nzMode="inline" class="shadow-sm" *ngIf="router.url != '/'">
     <li nz-menu-item nzIcon="test"></li>
     <li nz-menu-item routerLink="dashboard"  nzIcon="home"><i class="feather icon-inbox"></i></li>
     <li nz-menu-item nzIcon="home"><i class="feather icon-git-merge"></i></li>
@@ -9,6 +9,6 @@
     <li nz-menu-item nzIcon="home"><i class="feather icon-settings"></i></li>
     <li nz-menu-item nzIcon="test"></li>
 </ul>
-<div class="bottom-menu shadow-sm">
+<div class="bottom-menu shadow-sm" *ngIf="router.url != '/'">
 
 </div>
