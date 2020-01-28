@@ -1,1 +1,68 @@
-<p>signup works!</p>
+
+<div class="row mt-5 pt-5">
+    <div class="col mt-5">
+        <img src="../../../assets/web.svg" class="mx-auto d-block w-75 mt-5 pt-3" />
+    </div>
+    <div class="col">
+
+    </div>
+    <div class="col mt-5 right-panel text-white">
+        <h3 class="text-white go-right">Bienvenue chez <span class="font-weight-bold secondary">Galaxy Swiss Bourdin</span></h3>
+        <p class="go-right">Cette application permet la gestion des notes de frais des salariés <br/> et des collaborateurs de l'entreprise</p>
+        <ul class="list-inline go-right">
+            <li class="list-inline-item"><div class="divider-1 rounded shadow"></div></li>
+            <li class="list-inline-item"><div class="divider-2 rounded"></div></li>
+        </ul>
+        <div class="d-block mx-auto login-form p-4 text-white rounded mt-5">
+            <form nz-form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Le nom est requis">
+                        <nz-input-group nzPrefixIcon="idcard">
+                            <input type="text" nz-input class="py-4" formControlName="lastname" placeholder="Nom" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Le prénom est requis">
+                        <nz-input-group nzPrefixIcon="idcard">
+                            <input type="text" nz-input class="py-4" formControlName="firstname" placeholder="Prénom" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Saisissez une adresse email valide">
+                        <nz-input-group nzPrefixIcon="user">
+                            <input type="text" nz-input class="py-4" formControlName="email" placeholder="Email" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Please input your Password!">
+                        <nz-input-group nzPrefixIcon="lock">
+                            <input type="password" nz-input class="py-4" formControlName="password" placeholder="Mot de passe" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-control>
+                        <label nz-checkbox formControlName="remember">
+                            <span class="text-white">Se rappeler de moi</span>
+                        </label>
+                        <button nz-button class="login-form-button" [nzType]="'white'">Inscription</button>
+                        
+                        <a class="text-white" routerLink="/">Ou connectez vous maintenant !</a>
+                    </nz-form-control>
+                </nz-form-item>
+            </form>
+
+            
+        </div>
+        <div class="go-right social">
+            <ul class="list-inline">
+                <li class="list-inline-item">Facebook</li>
+                <li class="list-inline-item ml-4">Linkedin</li>
+                <li class="list-inline-item ml-4">Twitter</li>
+            </ul>
+        </div>
+    </div>
+</div>

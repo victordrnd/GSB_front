@@ -13,4 +13,9 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  isAuthRoute(){
+    return this.router.url == '/' || this.router.url == '/signup' ? true : false;
+  }
+
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivityService } from 'src/app/core/services/activity.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private activityService : ActivityService) { }
 
-  ngOnInit() {
+  activities;
+  async ngOnInit() {
+    this.activities = await this.activityService.getAll().toPromise();
+    console.log(this.activities);
   }
 
 }

@@ -1,7 +1,7 @@
-<div class="top-menu shadow-sm" *ngIf="router.url != '/'">
+<div class="top-menu shadow-sm" *ngIf="!isAuthRoute()">
 
 </div>
-<ul nz-menu nzMode="inline" class="shadow-sm" *ngIf="router.url != '/'">
+<ul nz-menu nzMode="inline" class="shadow-sm" *ngIf="!isAuthRoute()">
     <li nz-menu-item nzIcon="test"></li>
     <li nz-menu-item routerLink="dashboard"  nzIcon="home"><i class="feather icon-inbox"></i></li>
     <li nz-menu-item nzIcon="home"><i class="feather icon-git-merge"></i></li>
@@ -9,6 +9,8 @@
     <li nz-menu-item nzIcon="home"><i class="feather icon-settings"></i></li>
     <li nz-menu-item nzIcon="test"></li>
 </ul>
-<div class="bottom-menu shadow-sm" *ngIf="router.url != '/'">
+<div class="bottom-menu shadow-sm" *ngIf="!isAuthRoute()">
 
 </div>
+
+

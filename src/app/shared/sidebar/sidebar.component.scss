@@ -59,5 +59,12 @@ li{
 }
 
 .ant-menu-item-selected{
-    background-color: #daebff !important;
+    background-color: #9b89ff !important;
+    i{
+      font-weight: bold;
+    }
+}
+
+.ant-menu-inline .ant-menu-item::after{
+  background-color: #9b89ff05;
 }

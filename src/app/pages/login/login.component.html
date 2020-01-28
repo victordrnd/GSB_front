@@ -14,29 +14,29 @@
             <li class="list-inline-item"><div class="divider-2 rounded"></div></li>
         </ul>
         <div class="d-block mx-auto login-form p-4 text-white rounded mt-5">
-            <form nz-form [formGroup]="validateForm">
+            <form nz-form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <nz-form-item>
-                    <nz-form-control nzErrorTip="Please input your username!">
+                    <nz-form-control nzErrorTip="L'adresse email est invalide">
                         <nz-input-group nzPrefixIcon="user">
-                            <input type="text" nz-input class="py-4" formControlName="userName" placeholder="Username" />
+                            <input type="text" nz-input class="py-4" formControlName="email" placeholder="Email" />
                         </nz-input-group>
                     </nz-form-control>
                 </nz-form-item>
                 <nz-form-item>
-                    <nz-form-control nzErrorTip="Please input your Password!">
+                    <nz-form-control nzErrorTip="Le mot de passe est requis">
                         <nz-input-group nzPrefixIcon="lock">
-                            <input type="password" nz-input class="py-4" formControlName="password" placeholder="Password" />
+                            <input type="password" nz-input class="py-4" formControlName="password" placeholder="Mot de passe" />
                         </nz-input-group>
                     </nz-form-control>
                 </nz-form-item>
                 <nz-form-item>
                     <nz-form-control>
                         <label nz-checkbox formControlName="remember">
-                            <span class="text-white">Remember me</span>
+                            <span class="text-white">Se rappeler de moi</span>
                         </label>
-                        <button nz-button class="login-form-button" [nzType]="'white'">Log in</button>
+                        <button nz-button class="login-form-button" [nzType]="'white'">Connexion</button>
                         
-                        <a class="text-white">Or register now!</a>
+                        <a class="text-white" routerLink="/signup">Ou inscrivez vous maintenant !</a>
                     </nz-form-control>
                 </nz-form-item>
             </form>

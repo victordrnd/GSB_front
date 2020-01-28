@@ -1,9 +1,34 @@
 
 <div class="px-5">
     <h2>Activité récente</h2>
+
+    <nz-list
+      class="demo-loadmore-list"
+      [nzDataSource]="activities"
+      [nzItemLayout]="'horizontal'"
+      [nzLoading]="initLoading"
+      [nzRenderItem]="item"
+    >
+      <ng-template #item let-item>
+        <nz-list-item
+          [nzContent]="item.loading ? '' : 'content'">
+          <nz-skeleton [nzAvatar]="true" [nzActive]="true" [nzTitle]="false" [nzLoading]="item.loading">
+            <nz-list-item-meta
+              [nzTitle]="nzTitle"
+              nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+              nzDescription="Ant Design, a design language for background applications, is refined by Ant UED Team"
+            >
+              <ng-template #nzTitle>
+                <div *ngIf="item.description == 'created'">
+                  L'utilisateur {{item.causer.lastname}} {{item.causer.firstname}} a réalisé une nouvelle demande de frais
+                </div>
+              </ng-template>
+            </nz-list-item-meta>
+          </nz-skeleton>
+        </nz-list-item>
+      </ng-template>
+    </nz-list>
+
+
 </div>
 
-<div class="bg-white position-fixed shadow right-overlay p-3" >
-    <h5>Calendrier</h5>
-    <nz-calendar [(ngModel)]="selectedValue" (nzSelectChange)="selectChange($event)"></nz-calendar>
-</div>
