@@ -1,0 +1,40 @@
+<nz-list class="demo-loadmore-list" [nzDataSource]="activities" [nzItemLayout]="'horizontal'" [nzLoading]="initLoading"
+    [nzRenderItem]="item">
+    <ng-template #item let-item>
+        <nz-list-item [nzContent]="item.loading ? '' : content" class="bg-white p-3 shadow-sm mt-3">
+            <nz-skeleton [nzAvatar]="true" [nzActive]="true" [nzTitle]="false" [nzLoading]="item.loading">
+                <nz-list-item-meta [nzTitle]="nzTitle"
+                    nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png">
+                    <ng-template #nzTitle>
+                        <div *ngIf="item.description == 'created'">
+                            L'utilisateur {{item.causer.lastname}} {{item.causer.firstname}} a réalisé une nouvelle
+                            demande de frais.
+                            
+                            <nz-descriptions nzTitle="Détails du frais">
+                                <nz-descriptions-item nzTitle="Date">{{item.subject.created_at | date : 'medium'}}</nz-descriptions-item>
+                                <nz-descriptions-item nzTitle="Montant">{{item.subject.montant | currency : 'EUR'}}</nz-descriptions-item>
+                                <nz-descriptions-item nzTitle="Statut"><nz-tag [nzColor]="item.subject.status.color">{{item.subject.status.libelle}}</nz-tag></nz-descriptions-item>
+                                <nz-descriptions-item nzTitle="Description">{{item.subject.description}}</nz-descriptions-item>
+                              </nz-descriptions>
+                        </div>
+                        <div *ngIf="item.description == 'updated'">
+                            {{item.causer.lastname}} {{item.causer.firstname}} a
+                            {{item.subject.status.libelle | lowercase}} une demande de frais.
+                            <div class="ant-list-item-meta-description">
+                                Montant : {{item.subject.montant | currency : 'EUR'}}
+                                <nz-divider nzType="vertical"></nz-divider>
+                                <nz-tag [nzColor]="'purple'">{{item.subject.status.libelle}}</nz-tag>
+                                <nz-divider nzType="vertical"></nz-divider>
+                                Catégorie : {{item.subject.type.libelle}}
+                            </div>
+                            
+                        </div>
+                    </ng-template>
+                </nz-list-item-meta>
+            </nz-skeleton>
+            <ng-template #content>
+                <span class="small">{{item.created_at | date : 'medium'}}</span>
+            </ng-template>
+        </nz-list-item>
+    </ng-template>
+</nz-list>

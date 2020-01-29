@@ -14,6 +14,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { HttpTokenInterceptor } from './core/interceptors/http.token.interceptor';
+import { ActivityListComponent } from './pages/dashboard/activity-list/activity-list.component';
 
 registerLocaleData(fr);
 
@@ -26,6 +27,7 @@ registerLocaleData(fr);
     SignupComponent,
     HeaderComponent,
     SidebarComponent,
+    ActivityListComponent,
   ],
   imports: [
     BrowserModule,

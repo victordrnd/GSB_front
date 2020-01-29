@@ -1,5 +1,5 @@
 <div class="top-menu " *ngIf="!isAuthRoute()">
-
+    <img src="../../../assets/logo.png" width="40" class="d-block mx-auto pt-5"/>
 </div>
 <ul nz-menu nzMode="inline" *ngIf="!isAuthRoute()">
     <li nz-menu-item nzIcon="test"></li>
@@ -10,7 +10,11 @@
     <li nz-menu-item nzIcon="test"></li>
 </ul>
 <div class="bottom-menu " *ngIf="!isAuthRoute()">
-
+    
+    <div class="pt-5">
+        <nz-avatar nzText="VD" style="color:#9b89ff; background-color:#ffffff;margin-top:20vh" class="d-block mx-auto"></nz-avatar>
+    </div>
+    
 </div>
 
 
