@@ -1,33 +1,56 @@
 
 <div class="px-5">
     <h2>Activité récente</h2>
+    <div class="row">
+      <div class="col-8">
+        <nz-list
+        class="demo-loadmore-list"
+        [nzDataSource]="activities"
+        [nzItemLayout]="'horizontal'"
+        [nzLoading]="initLoading"
+        [nzRenderItem]="item"
+      >
+        <ng-template #item let-item>
+          <nz-list-item
+            [nzContent]="item.loading ? '' : content" class="bg-white p-3 shadow-sm mt-3">
+            <nz-skeleton [nzAvatar]="true" [nzActive]="true" [nzTitle]="false" [nzLoading]="item.loading">
+              <nz-list-item-meta
+                [nzTitle]="nzTitle"
+                nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+              >
+                <ng-template #nzTitle>
+                  <div *ngIf="item.description == 'created'">
+                    L'utilisateur {{item.causer.lastname}} {{item.causer.firstname}} a réalisé une nouvelle demande de frais.
+                    <div class="ant-list-item-meta-description">
+                      Montant : {{item.subject.montant | currency : 'EUR'}}
+                      <nz-divider nzType="vertical"></nz-divider>
+                      <nz-tag [nzColor]="'orange'">{{item.subject.status.libelle}}</nz-tag>
+                    </div>
+                  </div>
+                  <div *ngIf="item.description == 'updated'">
+                    {{item.causer.lastname}} {{item.causer.firstname}} a {{item.subject.status.libelle | lowercase}} une demande de frais.
+                    <div class="ant-list-item-meta-description">
+                      Montant : {{item.subject.montant | currency : 'EUR'}}
+                      <nz-divider nzType="vertical"></nz-divider>
+                      <nz-tag [nzColor]="'purple'">{{item.subject.status.libelle}}</nz-tag>
+                    </div>
+                  </div>
+                </ng-template>
+              </nz-list-item-meta>
+            </nz-skeleton>
+            <ng-template #content>
+              <nz-badge nzStatus="success"></nz-badge>
+              <i nz-icon nzType="eye" nzTheme="outline"></i>
+            </ng-template>
+          </nz-list-item>
+        </ng-template>
+      </nz-list>
+      </div>
+      <div class="col">
 
-    <nz-list
-      class="demo-loadmore-list"
-      [nzDataSource]="activities"
-      [nzItemLayout]="'horizontal'"
-      [nzLoading]="initLoading"
-      [nzRenderItem]="item"
-    >
-      <ng-template #item let-item>
-        <nz-list-item
-          [nzContent]="item.loading ? '' : 'content'">
-          <nz-skeleton [nzAvatar]="true" [nzActive]="true" [nzTitle]="false" [nzLoading]="item.loading">
-            <nz-list-item-meta
-              [nzTitle]="nzTitle"
-              nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-              nzDescription="Ant Design, a design language for background applications, is refined by Ant UED Team"
-            >
-              <ng-template #nzTitle>
-                <div *ngIf="item.description == 'created'">
-                  L'utilisateur {{item.causer.lastname}} {{item.causer.firstname}} a réalisé une nouvelle demande de frais
-                </div>
-              </ng-template>
-            </nz-list-item-meta>
-          </nz-skeleton>
-        </nz-list-item>
-      </ng-template>
-    </nz-list>
+      </div>
+    </div>
+    
 
 
 </div>

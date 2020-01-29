@@ -56,15 +56,28 @@ li{
 .ant-menu-item{
     line-height: 60px;
     height:60px;
+    :hover{
+      color:white !important;
+    }
+}
+li:hover{
+  color :white !important;
+  i{
+      padding : 8px;
+      background-color: #3f3d56;
+      border-radius: 12px;
+    }
 }
 
 .ant-menu-item-selected{
     background-color: #9b89ff !important;
     i{
-      font-weight: bold;
+      padding : 8px;
+      background-color: #3f3d56;
+      border-radius: 12px;
     }
 }
 
 .ant-menu-inline .ant-menu-item::after{
-  background-color: #9b89ff05;
+  display:none;
 }
