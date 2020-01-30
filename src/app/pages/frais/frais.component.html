@@ -1,0 +1,27 @@
+<div class="px-5">
+    <h2>Demandes de frais</h2>
+    <div class="row">
+        <nz-table class="table">
+            <thead (nzSortChange)="sort($event)">
+                <tr>
+                    <th>Montant</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Validé par</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let frais of listFrais">
+                    <td style="border-bottom: 1px solid #fafafa;">{{frais.montant | currency : 'EUR'}}</td>
+                    <td style="border-bottom: 1px solid #fafafa;">{{frais.description}}</td>
+                    <td style="border-bottom: 1px solid #fafafa;">{{frais.type.libelle}}</td>
+                    <td style="border-bottom: 1px solid #fafafa;">{{frais.status.libelle}}</td>
+                    <td><a><i nz-icon nzType="info-circle" (click)="openInfo(frais)" nzTheme="outline"></i></a></td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+
+
+</div>

@@ -15,6 +15,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { HttpTokenInterceptor } from './core/interceptors/http.token.interceptor';
 import { ActivityListComponent } from './pages/dashboard/activity-list/activity-list.component';
+import { FraisComponent } from './pages/frais/frais.component';
 
 registerLocaleData(fr);
 
@@ -28,6 +29,7 @@ registerLocaleData(fr);
     HeaderComponent,
     SidebarComponent,
     ActivityListComponent,
+    FraisComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,28 +6,81 @@
                 <nz-list-item-meta [nzTitle]="nzTitle"
                     nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png">
                     <ng-template #nzTitle>
-                        <div *ngIf="item.description == 'created'">
-                            L'utilisateur {{item.causer.lastname}} {{item.causer.firstname}} a réalisé une nouvelle
-                            demande de frais.
-                            
+
+
+                        <!-- Frais -->
+                        <div *ngIf="item.action == 'created' && item.subject_type == 'frais'">
+                            <div class="ant-comment-content-author">
+                                <span class="ant-comment-content-author-name ng-star-inserted">{{item.causer.firstname}}
+                                    {{item.causer.lastname}}</span>
+                                <span class="ant-comment-content-author-time ">{{item.last_updated}}</span>
+                            </div>
+                            <p>L'utilisateur {{item.causer.firstname}} {{item.causer.lastname}} a réalisé une nouvelle
+                                demande de frais.</p>
                             <nz-descriptions nzTitle="Détails du frais">
-                                <nz-descriptions-item nzTitle="Date">{{item.subject.created_at | date : 'medium'}}</nz-descriptions-item>
-                                <nz-descriptions-item nzTitle="Montant">{{item.subject.montant | currency : 'EUR'}}</nz-descriptions-item>
-                                <nz-descriptions-item nzTitle="Statut"><nz-tag [nzColor]="item.subject.status.color">{{item.subject.status.libelle}}</nz-tag></nz-descriptions-item>
-                                <nz-descriptions-item nzTitle="Description">{{item.subject.description}}</nz-descriptions-item>
-                              </nz-descriptions>
+                                <nz-descriptions-item nzTitle="Date">{{item.subject.created_at | date : 'medium'}}
+                                </nz-descriptions-item>
+                                <nz-descriptions-item nzTitle="Montant">{{item.subject.montant | currency : 'EUR'}}
+                                </nz-descriptions-item>
+                                <nz-descriptions-item nzTitle="Catégorie">{{item.subject.type.libelle}}
+                                </nz-descriptions-item>
+                                <nz-descriptions-item nzTitle="Statut">
+                                    <nz-tag [nzColor]="item.subject.status.color">{{item.subject.status.libelle}}
+                                    </nz-tag>
+                                </nz-descriptions-item>
+                                <nz-descriptions-item nzTitle="Description">{{item.subject.description}}
+                                </nz-descriptions-item>
+                            </nz-descriptions>
                         </div>
-                        <div *ngIf="item.description == 'updated'">
-                            {{item.causer.lastname}} {{item.causer.firstname}} a
-                            {{item.subject.status.libelle | lowercase}} une demande de frais.
+
+
+                        <!-- Mis à jour de frais -->
+                        <div *ngIf="item.action == 'updated' && item.subject_type == 'frais'">
+                            <div class="ant-comment-content-author">
+                                <span class="ant-comment-content-author-name ng-star-inserted">{{item.causer.firstname}}
+                                    {{item.causer.lastname}}</span>
+                                <span class="ant-comment-content-author-time ">{{item.last_updated}}</span>
+                            </div>
+                            <p>{{item.causer.firstname}} {{item.causer.lastname}} a
+                                {{item.subject.status.libelle | lowercase}} une demande de frais.</p>
                             <div class="ant-list-item-meta-description">
                                 Montant : {{item.subject.montant | currency : 'EUR'}}
                                 <nz-divider nzType="vertical"></nz-divider>
-                                <nz-tag [nzColor]="'purple'">{{item.subject.status.libelle}}</nz-tag>
+                                <nz-tag [nzColor]="item.subject.status.color">{{item.subject.status.libelle}}</nz-tag>
                                 <nz-divider nzType="vertical"></nz-divider>
                                 Catégorie : {{item.subject.type.libelle}}
                             </div>
-                            
+
+                        </div>
+
+
+                        <!-- Utilisateur -->
+                        <div *ngIf="item.action == 'created' && item.subject_type == 'user'">
+                            <div class="ant-comment-content-author">
+                                <span class="ant-comment-content-author-name ng-star-inserted">{{item.causer.firstname}}
+                                    {{item.causer.lastname}}</span>
+                                <span class="ant-comment-content-author-time ">{{item.last_updated}}</span>
+                            </div>
+                            L'utilisateur {{item.subject.firstname}} {{item.subject.lastname}} s'est inscrit
+                            <nz-descriptions nzTitle="Détails de l'utilisateur">
+                                <nz-descriptions-item nzTitle="Nom complet">{{item.subject.lastname}}
+                                    {{item.subject.firstname}}
+                                </nz-descriptions-item>
+                                <nz-descriptions-item nzTitle="Email">{{item.subject.email}}
+                                </nz-descriptions-item>
+                                <nz-descriptions-item nzTitle="Téléphone">
+                                    {{item.subject.phone}}
+                                </nz-descriptions-item>
+                            </nz-descriptions>
+                        </div>
+
+                        <div *ngIf="item.action == 'updated' && item.subject_type == 'user'">
+                            <div class="ant-comment-content-author">
+                                <span class="ant-comment-content-author-name ng-star-inserted">{{item.causer.firstname}}
+                                    {{item.causer.lastname}}</span>
+                                <span class="ant-comment-content-author-time ">{{item.last_updated}}</span>
+                            </div>
+                            L'utilisateur {{item.subject.firstname}} {{item.subject.lastname}} a mis à jour son mot de passe
                         </div>
                     </ng-template>
                 </nz-list-item-meta>
