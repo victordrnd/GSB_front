@@ -4,7 +4,7 @@
         <nz-list-item [nzContent]="item.loading ? '' : content" class="bg-white p-3 shadow-sm mt-3">
             <nz-skeleton [nzAvatar]="true" [nzActive]="true" [nzTitle]="false" [nzLoading]="item.loading">
                 <nz-list-item-meta [nzTitle]="nzTitle"
-                    nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png">
+                    [nzAvatar]="avatar">
                     <ng-template #nzTitle>
 
 
@@ -57,8 +57,8 @@
                         <!-- Utilisateur -->
                         <div *ngIf="item.action == 'created' && item.subject_type == 'user'">
                             <div class="ant-comment-content-author">
-                                <span class="ant-comment-content-author-name ng-star-inserted">{{item.causer.firstname}}
-                                    {{item.causer.lastname}}</span>
+                                <span class="ant-comment-content-author-name ng-star-inserted">{{item.subject.firstname}}
+                                    {{item.subject.lastname}}</span>
                                 <span class="ant-comment-content-author-time ">{{item.last_updated}}</span>
                             </div>
                             L'utilisateur {{item.subject.firstname}} {{item.subject.lastname}} s'est inscrit
@@ -83,6 +83,9 @@
                             L'utilisateur {{item.subject.firstname}} {{item.subject.lastname}} a mis à jour son mot de passe
                         </div>
                     </ng-template>
+                    <ng-template #avatar>
+                        <nz-avatar [nzText]="getAvatarLetter(item)"></nz-avatar>
+                    </ng-template> 
                 </nz-list-item-meta>
             </nz-skeleton>
             <ng-template #content>

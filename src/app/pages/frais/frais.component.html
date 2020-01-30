@@ -16,7 +16,12 @@
                     <td style="border-bottom: 1px solid #fafafa;">{{frais.montant | currency : 'EUR'}}</td>
                     <td style="border-bottom: 1px solid #fafafa;">{{frais.description}}</td>
                     <td style="border-bottom: 1px solid #fafafa;">{{frais.type.libelle}}</td>
-                    <td style="border-bottom: 1px solid #fafafa;">{{frais.status.libelle}}</td>
+                    <td style="border-bottom: 1px solid #fafafa;">
+                        <nz-select [(ngModel)]="frais.status.id" nzAllowClear nzPlaceHolder="Choose">
+                            <nz-option *ngFor="let status of statuses" [nzValue]="status.id" [nzLabel]="status.libelle"></nz-option>
+                          </nz-select>
+                        {{frais.status.libelle}}
+                    </td>
                     <td><a><i nz-icon nzType="info-circle" (click)="openInfo(frais)" nzTheme="outline"></i></a></td>
                 </tr>
             </tbody>

@@ -15,4 +15,15 @@ export class ActivityListComponent implements OnInit {
     this.activities = await this.activityService.getAll().toPromise();
     console.log(this.activities);
   }
+
+
+
+
+  getAvatarLetter(item){
+    if(item.causer){
+      return item.causer.firstname.substring(0,1) + item.causer.lastname.substring(0,1)
+    }else{
+      return item.subject.firstname.substring(0,1) + item.subject.lastname.substring(0,1)
+    }
+  }
 }

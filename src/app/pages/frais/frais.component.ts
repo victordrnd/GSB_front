@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FraisService } from 'src/app/core/services/frais.service';
+import { StatusService } from 'src/app/core/services/status.service';
 
 @Component({
   selector: 'app-frais',
@@ -8,10 +9,13 @@ import { FraisService } from 'src/app/core/services/frais.service';
 })
 export class FraisComponent implements OnInit {
   listFrais;
-  constructor(private fraisService : FraisService) { }
+  statuses
+  constructor(private fraisService : FraisService,
+    private statusService : StatusService) { }
 
   async ngOnInit() {
     this.listFrais = await this.fraisService.getAll().toPromise();
+    this.statuses = await this.statusService.getAll().toPromise();
   }
 
 }
