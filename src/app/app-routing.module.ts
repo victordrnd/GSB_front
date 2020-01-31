@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { FraisComponent } from './pages/frais/frais.component';
+import { FraisDetailComponent } from './pages/frais/frais-detail/frais-detail.component';
 
 
 const routes: Routes = [
@@ -21,8 +22,18 @@ const routes: Routes = [
   },
   {
     path : 'frais',
-    component : FraisComponent
-  }
+    children : [
+      {
+        path : '',
+        component: FraisComponent
+      },
+      {
+        path: ':id',
+        component: FraisDetailComponent
+      }
+    ]
+  },
+  
 ];
 
 @NgModule({

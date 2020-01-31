@@ -1,0 +1,36 @@
+<h2>Détail du frais</h2>
+<div class="row">
+    <div class="col-8">
+        <nz-descriptions  class="rounded shadow-sm p-3 bg-white" nzTitle="Détails du frais" nzBordered nzLayout="vertical">
+            <nz-descriptions-item nzTitle="Référence">n°{{frais?.id}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Montant">{{frais?.montant | currency : 'EUR'}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Catégorie">{{frais?.type.libelle}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Heure de création">
+              {{frais?.created_at | date : 'medium'}}
+            </nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Durée depuis création" [nzSpan]="2">
+              {{frais?.last_update}}
+            </nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Statut" [nzSpan]="3">
+                <nz-tag [nzColor]="frais?.status.color">{{frais?.status.libelle}}</nz-tag>
+            </nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Negotiated Amount">$80.00</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Discount">$20.00</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Validé par">{{frais?.validated_by.firstname}} {{frais?.validated_by.lastname}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Description" [nzSpan]="3">
+              <br />
+              <nz-comment [nzAuthor]="frais?.user.firstname + ' ' + frais?.user.lastname" [nzDatetime]="frais?.last_updated">
+                <nz-avatar  nz-comment-avatar [nzText]="getAvatarLetter(frais)"></nz-avatar>
+                <nz-comment-content>
+                  <p>{{frais?.description}}</p>
+                </nz-comment-content>
+                
+              </nz-comment>
+              
+            </nz-descriptions-item>
+          </nz-descriptions>
+    </div>
+    <div class="col">
+
+    </div>
+</div>

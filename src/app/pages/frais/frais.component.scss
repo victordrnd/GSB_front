@@ -1,0 +1,18 @@
+nz-select{
+    min-width : 200px
+}
+
+nz-list-item{
+    border-radius : 20px;
+    :hover{
+        cursor:pointer;
+        a{
+            color :#9b89ff;
+        }
+    }
+}
+
+.ant-avatar{
+    color: #ffffff;
+    background-color: #b4a7ff94;
+}

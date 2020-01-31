@@ -1,31 +1,40 @@
 <div class="px-5">
     <h2>Demandes de frais</h2>
     <div class="row">
-        <nz-table class="table">
-            <thead (nzSortChange)="sort($event)">
-                <tr>
-                    <th>Montant</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Status</th>
-                    <th>Validé par</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let frais of listFrais">
-                    <td style="border-bottom: 1px solid #fafafa;">{{frais.montant | currency : 'EUR'}}</td>
-                    <td style="border-bottom: 1px solid #fafafa;">{{frais.description}}</td>
-                    <td style="border-bottom: 1px solid #fafafa;">{{frais.type.libelle}}</td>
-                    <td style="border-bottom: 1px solid #fafafa;">
-                        <nz-select [(ngModel)]="frais.status.id" nzAllowClear nzPlaceHolder="Choose">
-                            <nz-option *ngFor="let status of statuses" [nzValue]="status.id" [nzLabel]="status.libelle"></nz-option>
-                          </nz-select>
-                        {{frais.status.libelle}}
-                    </td>
-                    <td><a><i nz-icon nzType="info-circle" (click)="openInfo(frais)" nzTheme="outline"></i></a></td>
-                </tr>
-            </tbody>
-        </nz-table>
+        <nz-list class="demo-loadmore-list w-100" [nzDataSource]="listFrais" [nzItemLayout]="'horizontal'"
+            [nzLoading]="initLoading" [nzRenderItem]="item" [nzLoadMore]="loadMore">
+            <ng-template #item let-frais>
+                <nz-list-item class="bg-white mt-4 p-3" (click)="showFrais(frais.id)">
+                    <nz-skeleton [nzAvatar]="true" [nzActive]="true" [nzTitle]="false" [nzLoading]="false">
+                        <nz-list-item-meta [nzTitle]="nzTitle"
+                            [nzAvatar]="avatar"
+                            [nzDescription]="content">
+                            <ng-template #nzTitle>
+                                <a class="font-weight-bold">Demande de frais n°{{frais.id}} de {{frais.user.firstname}} {{frais.user.lastname}}</a>
+                            </ng-template> 
+                            <ng-template #content>
+                                Montant : {{frais.montant | currency : 'EUR'}} 
+                                <nz-divider nzType="vertical"></nz-divider>
+                                <nz-tag [nzColor]="frais.status.color">{{frais.status.libelle}}</nz-tag>
+                                <nz-divider nzType="vertical"></nz-divider>
+                                Catégorie : {{frais.type.libelle}}
+                                <div class="float-right">
+                                    {{frais.last_update}}
+                                </div>
+                            </ng-template>
+                            <ng-template #avatar>
+                                <nz-avatar [nzText]="getAvatarLetter(frais)"></nz-avatar>
+                            </ng-template> 
+                        </nz-list-item-meta>
+                    </nz-skeleton>
+                </nz-list-item>
+            </ng-template>
+            <ng-template #loadMore>
+                <div class="loadmore">
+                    <button nz-button *ngIf="!loadingMore" (click)="onLoadMore()">loading more</button>
+                </div>
+            </ng-template>
+        </nz-list>
     </div>
 
 

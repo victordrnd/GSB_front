@@ -14,5 +14,9 @@ export class FraisService {
   getAll(){
     return this.http.get(`${environment.apiurl}/frais`).pipe(map((res:any) => res.result));
   }
+
+  findById(id){
+    return this.http.get(`${environment.apiurl}/frais/show/${id}`).pipe(map((res:any) => res.result));
+  }
   
 }
