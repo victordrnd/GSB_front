@@ -19,4 +19,8 @@ export class FraisService {
     return this.http.get(`${environment.apiurl}/frais/show/${id}`).pipe(map((res:any) => res.result));
   }
   
+
+  update(frais){
+    return this.http.post(`${environment.apiurl}/frais/update/status`,frais).pipe(map((res:any) => res.result));
+  }
 }

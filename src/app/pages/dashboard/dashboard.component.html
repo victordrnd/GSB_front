@@ -6,21 +6,32 @@
     </div>
     <div class="col">
       <div class="row">
-        <div class="col-12">
-          <div class="bg-white right-block mt-3 p-3 shadow-sm">
-            <h3>test</h3>
+        <div class="bg-white right-block mt-3 p-3 shadow-sm">
+          <div class="col-12">
+            <h3>Demandes traitées</h3>
+
+            <div class="d-block mx-auto w-50">
+              <nz-progress nz-tooltip nzTitle="3 done / 3 in progress / 4 to do" nzType="circle" [nzPercent]="60"
+                [nzSuccessPercent]="30" nzStatus="active"
+                [nzStrokeColor]="{ '0%': '#9b89ff', '50%': '#9b89ff', '100%': '#9b89ff' }"></nz-progress>
+            </div>
+            <nz-badge nzColor="#7a62ff" nzText="4 Validées"></nz-badge>
+            <br/>
+            <nz-badge nzColor="#f5222d" nzText="2 Refusées"></nz-badge>
+            <br/>
+            <nz-badge nzColor="#faad14" nzText="8 En Attente"></nz-badge>
 
           </div>
         </div>
         <div class="col-12">
           <div class="bg-white right-block mt-3 p-3 shadow-sm">
             <h3>test thibaut</h3>
+          </div>
         </div>
+
       </div>
-
     </div>
+
+
+
   </div>
-
-
-
-</div>
