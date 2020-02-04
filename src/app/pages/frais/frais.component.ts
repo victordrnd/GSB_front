@@ -12,12 +12,10 @@ export class FraisComponent implements OnInit {
   listFrais;
   statuses
   constructor(private fraisService: FraisService,
-    private statusService: StatusService,
     private router : Router) { }
 
   async ngOnInit() {
     this.listFrais = await this.fraisService.getAll().toPromise();
-    this.statuses = await this.statusService.getAll().toPromise();
   }
 
 

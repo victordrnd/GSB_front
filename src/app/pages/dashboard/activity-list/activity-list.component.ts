@@ -13,7 +13,6 @@ export class ActivityListComponent implements OnInit {
   activities;
   async ngOnInit() {
     this.activities = await this.activityService.getAll().toPromise();
-    console.log(this.activities);
   }
 
 

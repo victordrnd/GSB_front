@@ -17,7 +17,7 @@ import { HttpTokenInterceptor } from './core/interceptors/http.token.interceptor
 import { ActivityListComponent } from './pages/dashboard/activity-list/activity-list.component';
 import { FraisComponent } from './pages/frais/frais.component';
 import { FraisDetailComponent } from './pages/frais/frais-detail/frais-detail.component';
-
+import { ChartsModule } from 'ng2-charts';
 registerLocaleData(fr);
 
 
@@ -40,7 +40,8 @@ registerLocaleData(fr);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartsModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: fr_FR },

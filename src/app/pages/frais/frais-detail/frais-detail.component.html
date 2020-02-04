@@ -22,6 +22,7 @@
                 <nz-avatar  nz-comment-avatar [nzText]="getAvatarLetter(frais)"></nz-avatar>
                 <nz-comment-content>
                   <p>{{frais?.description}}</p>
+                  <img *ngIf="frais" src="{{environement.assetsUrl}}{{frais?.photo_url}}" class="w-100 border-0">
                 </nz-comment-content>
                 
               </nz-comment>
@@ -38,6 +39,6 @@
           <nz-option *ngFor="let statu of status" [nzValue]="statu.id" [nzLabel]="statu.libelle"></nz-option>
         </nz-select>
 
-        <button nz-button nzType="primary"  class="mt-4" (click)="onSubmit()" disabled="frais?.status?.libelle != 'En attente' " nzBlock>Confirmer <i nz-icon nzType="check" nzTheme="outline"></i></button>
+        <button nz-button nzType="primary"  class="mt-4" (click)="onSubmit()" nzBlock>Confirmer <i nz-icon nzType="check" nzTheme="outline"></i></button>
     </div>
 </div>

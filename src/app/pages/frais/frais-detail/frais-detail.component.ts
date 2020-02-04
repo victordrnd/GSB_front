@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FraisService } from 'src/app/core/services/frais.service';
 import { StatusService } from 'src/app/core/services/status.service';
 import { NzNotificationService } from 'ng-zorro-antd';
-
+import {environment} from "../../../../environments/environment";
 @Component({
   selector: 'app-frais-detail',
   templateUrl: './frais-detail.component.html',
@@ -17,7 +17,7 @@ export class FraisDetailComponent implements OnInit {
     private notificationService : NzNotificationService) { }
 
 
-
+  environement = environment;
   frais;
   status;
 
