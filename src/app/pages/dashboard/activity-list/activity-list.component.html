@@ -9,7 +9,7 @@
 
 
                         <!-- Frais -->
-                        <div *ngIf="item.action == 'created' && item.subject_type == 'frais'">
+                        <div *ngIf="item.action == 'created' && item.subject_type == 'frais'" class="bubble-card" (click)="goToFrais(item.subject.id)">
                             <div class="ant-comment-content-author">
                                 <span class="ant-comment-content-author-name ng-star-inserted">{{item.causer.firstname}}
                                     {{item.causer.lastname}}</span>
@@ -35,7 +35,7 @@
 
 
                         <!-- Mis à jour de frais -->
-                        <div *ngIf="item.action == 'updated' && item.subject_type == 'frais'">
+                        <div *ngIf="item.action == 'updated' && item.subject_type == 'frais'" class="bubble-card" (click)="goToFrais(item.subject.id)">
                             <div class="ant-comment-content-author">
                                 <span class="ant-comment-content-author-name ng-star-inserted">{{item.causer.firstname}}
                                     {{item.causer.lastname}}</span>
@@ -55,7 +55,7 @@
 
 
                         <!-- Utilisateur -->
-                        <div *ngIf="item.action == 'created' && item.subject_type == 'user'">
+                        <div *ngIf="item.action == 'created' && item.subject_type == 'user'" class="bubble-card">
                             <div class="ant-comment-content-author">
                                 <span class="ant-comment-content-author-name ng-star-inserted">{{item.subject.firstname}}
                                     {{item.subject.lastname}}</span>

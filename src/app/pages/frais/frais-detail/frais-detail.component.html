@@ -22,7 +22,7 @@
                 <nz-avatar  nz-comment-avatar [nzText]="getAvatarLetter(frais)"></nz-avatar>
                 <nz-comment-content>
                   <p>{{frais?.description}}</p>
-                  <img *ngIf="frais" src="{{environement.assetsUrl}}{{frais?.photo_url}}" class="w-100 border-0">
+                  <img *ngIf="frais" src="{{environement.assetsUrl}}{{frais?.photo_url}}" class="mx-auto d-block border-0" style="max-height:90vh;">
                 </nz-comment-content>
                 
               </nz-comment>
@@ -35,7 +35,9 @@
         <h6 class="font-weight-bold">Modifier le statut</h6>
         <p nz-text nzType="secondary">
            Toute validation est définitive et ne pourra pas être modifiée</p> 
-        <nz-select *ngIf="status && frais" [(ngModel)]="frais.status_id" [nzDisabled]="frais?.status?.libelle != 'En attente' ">
+        <nz-select *ngIf="status && frais" [(ngModel)]="frais.status_id" 
+        >
+        <!-- [nzDisabled]="frais?.status?.libelle != 'En attente' " -->
           <nz-option *ngFor="let statu of status" [nzValue]="statu.id" [nzLabel]="statu.libelle"></nz-option>
         </nz-select>
 
