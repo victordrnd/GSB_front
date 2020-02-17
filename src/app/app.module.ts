@@ -18,6 +18,9 @@ import { ActivityListComponent } from './pages/dashboard/activity-list/activity-
 import { FraisComponent } from './pages/frais/frais.component';
 import { FraisDetailComponent } from './pages/frais/frais-detail/frais-detail.component';
 import { ChartsModule } from 'ng2-charts';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
 registerLocaleData(fr);
 
 
@@ -41,12 +44,14 @@ registerLocaleData(fr);
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    ChartsModule
+    ChartsModule,
+    AngularFireMessagingModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [
     { provide: NZ_I18N, useValue: fr_FR },
     {provide : LOCALE_ID, useValue : "fr-FR"},
-    {provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })

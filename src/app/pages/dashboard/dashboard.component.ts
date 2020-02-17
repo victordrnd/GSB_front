@@ -21,27 +21,27 @@ export class DashboardComponent implements OnInit {
 
   public lineChartOptions: (ChartOptions) = {
     responsive: true,
-    maintainAspectRatio: false,
+    maintainAspectRatio: true,
     title : {
       display :true,
       text : 'Variation du stock',
-      fontColor : 'white'
+      fontColor : 'black'
     },
     scales: {
       xAxes: [{
         display: true,
-        gridLines : {color :'rgba(255,255,255,0.09)', zeroLineColor : 'transparent'},
+        gridLines : {color :'rgba(0,0,0,0.09)', zeroLineColor : 'transparent'},
         ticks :{
-          fontColor : 'white'
+          fontColor : 'black'
         }
       }],
       yAxes: [
         {
-          gridLines: { color: 'transparent', drawTicks: false, zeroLineColor : '#ffffff44' },
+          gridLines: { color: 'transparent', drawTicks: false, zeroLineColor : 'black' },
           display: true,
           ticks: {
             beginAtZero: true,
-            fontColor : 'white',
+            fontColor : 'black',
             stepSize : 50
           }
           
@@ -51,7 +51,7 @@ export class DashboardComponent implements OnInit {
   };
   public lineChartColors : Color[] = [
     {
-      backgroundColor: 'rgba(255,255,255,0.1)',
+      backgroundColor: '#7a62ff',
       borderColor: '#fff',
       
     }

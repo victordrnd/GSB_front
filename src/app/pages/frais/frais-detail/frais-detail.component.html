@@ -15,7 +15,7 @@
                 <nz-tag [nzColor]="frais?.status.color">{{frais?.status?.libelle}}</nz-tag>
             </nz-descriptions-item>
             <nz-descriptions-item nzTitle="Salarié">{{frais?.user?.firstname}} {{frais?.user?.lastname}}</nz-descriptions-item>
-            <nz-descriptions-item nzTitle="Validé par" [nzSpan]="2">{{frais?.validated_by?.firstname}} {{frais?.validated_by?.lastname}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Administré par" [nzSpan]="2">{{frais?.validated_by?.firstname}} {{frais?.validated_by?.lastname}}</nz-descriptions-item>
             <nz-descriptions-item nzTitle="Description" [nzSpan]="3">
               <br />
               <nz-comment [nzAuthor]="frais?.user?.firstname + ' ' + frais?.user?.lastname" [nzDatetime]="frais?.last_updated">
