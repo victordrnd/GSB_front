@@ -41,8 +41,8 @@
                                     {{item.causer.lastname}}</span>
                                 <span class="ant-comment-content-author-time ">{{item.last_updated}}</span>
                             </div>
-                            <p>{{item.causer.firstname}} {{item.causer.lastname}} a
-                                {{item.subject.status.libelle | lowercase}} une demande de frais.</p>
+                            <p>{{item.causer.firstname}} {{item.causer.lastname}} a mis à jour le status d'un frais vers :
+                                {{item.subject.status.libelle}}</p>
                             <div class="ant-list-item-meta-description">
                                 Montant : {{item.subject.montant | currency : 'EUR'}}
                                 <nz-divider nzType="vertical"></nz-divider>
@@ -72,15 +72,6 @@
                                     {{item.subject.phone}}
                                 </nz-descriptions-item>
                             </nz-descriptions>
-                        </div>
-
-                        <div *ngIf="item.action == 'updated' && item.subject_type == 'user'">
-                            <div class="ant-comment-content-author">
-                                <span class="ant-comment-content-author-name ng-star-inserted">{{item.causer.firstname}}
-                                    {{item.causer.lastname}}</span>
-                                <span class="ant-comment-content-author-time ">{{item.last_updated}}</span>
-                            </div>
-                            L'utilisateur {{item.subject.firstname}} {{item.subject.lastname}} a mis à jour son mot de passe
                         </div>
                     </ng-template>
                     <ng-template #avatar>

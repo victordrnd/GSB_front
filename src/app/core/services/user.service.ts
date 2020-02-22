@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { distinctUntilChanged, map, catchError } from 'rxjs/operators';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { NotificationService } from './notification.service';
+import { Router } from '@angular/router';
 //import { NgxPermissionsService } from 'ngx-permissions';
 
 @Injectable({
@@ -20,7 +22,9 @@ export class UserService {
 
 
   public permissions : Array<any>;
-  constructor(private http : HttpClient
+  constructor(private http : HttpClient,
+    private messagingService : NotificationService,
+    private router : Router
     //private permissionsService : NgxPermissionsService
     ) { }
 
@@ -56,7 +60,7 @@ export class UserService {
 
   attemptAuth(credentials): any {
     return this.http.post(`${environment.apiurl}/auth/login`, credentials).pipe(map((res: any) => {
-      this.setAuth(res.result);
+      this.setAuth(res.result);      
       return res.result;
     }),
       catchError(this.formatErrors));
