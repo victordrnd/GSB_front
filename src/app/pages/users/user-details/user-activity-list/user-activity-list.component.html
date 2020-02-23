@@ -1,66 +1,73 @@
-<nz-list class="demo-loadmore-list" [nzDataSource]="activities" [nzItemLayout]="'horizontal'"
-    [nzRenderItem]="item">
-    <ng-template #item let-item>
-        <nz-list-item [nzContent]="item.loading ? '' : content" class="bg-white p-3 shadow-sm rounded mt-3">
-            <nz-skeleton [nzAvatar]="true" [nzActive]="true" [nzTitle]="false" [nzLoading]="item.loading">
-                <nz-list-item-meta [nzTitle]="nzTitle"
-                    [nzAvatar]="avatar">
-                    <ng-template #nzTitle>
+<cdk-virtual-scroll-viewport [itemSize]="activities.length" style="height:90vh">
+    <nz-list class="demo-loadmore-list" [nzDataSource]="activities" [nzItemLayout]="'horizontal'" [nzRenderItem]="item">
+        <ng-template #item let-item>
+            <nz-list-item [nzContent]="item.loading ? '' : content" class="bg-white p-3 shadow-sm rounded mt-3">
+                <nz-skeleton [nzAvatar]="true" [nzActive]="true" [nzTitle]="false" [nzLoading]="item.loading">
+                    <nz-list-item-meta [nzTitle]="nzTitle" [nzAvatar]="avatar">
+                        <ng-template #nzTitle>
 
 
-                        <!-- Frais -->
-                        <div *ngIf="item.action == 'created'" class="bubble-card" (click)="goToFrais(item.subject.id)">
-                            <div class="ant-comment-content-author">
-                                <span class="ant-comment-content-author-name ng-star-inserted">{{item.causer.firstname}}
-                                    {{item.causer.lastname}}</span>
-                                <!-- <span class="ant-comment-content-author-time ">{{item.last_updated}}</span> -->
+                            <!-- Frais -->
+                            <div *ngIf="item.action == 'created'" class="bubble-card"
+                                (click)="goToFrais(item.subject.id)">
+                                <div class="ant-comment-content-author">
+                                    <span
+                                        class="ant-comment-content-author-name ng-star-inserted">{{item.causer.firstname}}
+                                        {{item.causer.lastname}}</span>
+                                    <!-- <span class="ant-comment-content-author-time ">{{item.last_updated}}</span> -->
+                                </div>
+                                <p>L'utilisateur {{item.causer.firstname}} {{item.causer.lastname}} a réalisé une
+                                    nouvelle
+                                    demande de frais.</p>
+                                <nz-descriptions nzTitle="Détails du frais">
+                                    <nz-descriptions-item nzTitle="Date">{{item.subject.created_at | date : 'medium'}}
+                                    </nz-descriptions-item>
+                                    <nz-descriptions-item nzTitle="Montant">{{item.subject.montant | currency : 'EUR'}}
+                                    </nz-descriptions-item>
+                                    <nz-descriptions-item nzTitle="Catégorie">{{item.subject.type.libelle}}
+                                    </nz-descriptions-item>
+                                    <nz-descriptions-item nzTitle="Statut">
+                                        <nz-tag [nzColor]="item.subject.status.color">{{item.subject.status.libelle}}
+                                        </nz-tag>
+                                    </nz-descriptions-item>
+                                    <nz-descriptions-item nzTitle="Description">{{item.subject.description}}
+                                    </nz-descriptions-item>
+                                </nz-descriptions>
                             </div>
-                            <p>L'utilisateur {{item.causer.firstname}} {{item.causer.lastname}} a réalisé une nouvelle
-                                demande de frais.</p>
-                            <nz-descriptions nzTitle="Détails du frais">
-                                <nz-descriptions-item nzTitle="Date">{{item.subject.created_at | date : 'medium'}}
-                                </nz-descriptions-item>
-                                <nz-descriptions-item nzTitle="Montant">{{item.subject.montant | currency : 'EUR'}}
-                                </nz-descriptions-item>
-                                <nz-descriptions-item nzTitle="Catégorie">{{item.subject.type.libelle}}
-                                </nz-descriptions-item>
-                                <nz-descriptions-item nzTitle="Statut">
+
+
+                            <!-- Mis à jour de frais -->
+                            <div *ngIf="item.action == 'updated'" class="bubble-card"
+                                (click)="goToFrais(item.subject.id)">
+                                <div class="ant-comment-content-author">
+                                    <span
+                                        class="ant-comment-content-author-name ng-star-inserted">{{item.causer.firstname}}
+                                        {{item.causer.lastname}}</span>
+                                    <!-- <span class="ant-comment-content-author-time ">{{item.last_updated}}</span> -->
+                                </div>
+                                <p>{{item.causer.firstname}} {{item.causer.lastname}} a mis à jour le status d'un frais
+                                    vers :
+                                    {{item.subject.status.libelle}}</p>
+                                <div class="ant-list-item-meta-description">
+                                    Montant : {{item.subject.montant | currency : 'EUR'}}
+                                    <nz-divider nzType="vertical"></nz-divider>
                                     <nz-tag [nzColor]="item.subject.status.color">{{item.subject.status.libelle}}
                                     </nz-tag>
-                                </nz-descriptions-item>
-                                <nz-descriptions-item nzTitle="Description">{{item.subject.description}}
-                                </nz-descriptions-item>
-                            </nz-descriptions>
-                        </div>
+                                    <nz-divider nzType="vertical"></nz-divider>
+                                    Catégorie : {{item.subject.type.libelle}}
+                                </div>
 
-
-                        <!-- Mis à jour de frais -->
-                        <div *ngIf="item.action == 'updated'" class="bubble-card" (click)="goToFrais(item.subject.id)">
-                            <div class="ant-comment-content-author">
-                                <span class="ant-comment-content-author-name ng-star-inserted">{{item.causer.firstname}}
-                                    {{item.causer.lastname}}</span>
-                                <!-- <span class="ant-comment-content-author-time ">{{item.last_updated}}</span> -->
                             </div>
-                            <p>{{item.causer.firstname}} {{item.causer.lastname}} a mis à jour le status d'un frais vers :
-                                {{item.subject.status.libelle}}</p>
-                            <div class="ant-list-item-meta-description">
-                                Montant : {{item.subject.montant | currency : 'EUR'}}
-                                <nz-divider nzType="vertical"></nz-divider>
-                                <nz-tag [nzColor]="item.subject.status.color">{{item.subject.status.libelle}}</nz-tag>
-                                <nz-divider nzType="vertical"></nz-divider>
-                                Catégorie : {{item.subject.type.libelle}}
-                            </div>
-
-                        </div>
-                    </ng-template>
-                    <ng-template #avatar>
-                        <nz-avatar [nzText]="getAvatarLetter(item)"></nz-avatar>
-                    </ng-template> 
-                </nz-list-item-meta>
-            </nz-skeleton>
-            <ng-template #content>
-                <span class="small">{{item.created_at | date : 'medium'}}</span>
-            </ng-template>
-        </nz-list-item>
-    </ng-template>
-</nz-list>
+                        </ng-template>
+                        <ng-template #avatar>
+                            <nz-avatar [nzText]="getAvatarLetter(item)"></nz-avatar>
+                        </ng-template>
+                    </nz-list-item-meta>
+                </nz-skeleton>
+                <ng-template #content>
+                    <span class="small">{{item.created_at | date : 'medium'}}</span>
+                </ng-template>
+            </nz-list-item>
+        </ng-template>
+    </nz-list>
+</cdk-virtual-scroll-viewport>

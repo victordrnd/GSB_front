@@ -24,6 +24,7 @@ import { UsersComponent } from './pages/users/users.component';
 import { UserDetailsComponent } from './pages/users/user-details/user-details.component';
 import { SpinComponent } from './shared/spin/spin.component';
 import { UserActivityListComponent } from './pages/users/user-details/user-activity-list/user-activity-list.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 registerLocaleData(fr);
 
 
@@ -52,7 +53,8 @@ registerLocaleData(fr);
     ReactiveFormsModule,
     ChartsModule,
     AngularFireMessagingModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    ScrollingModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: fr_FR },
