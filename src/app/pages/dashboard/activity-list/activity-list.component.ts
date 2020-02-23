@@ -31,4 +31,8 @@ export class ActivityListComponent implements OnInit {
   goToFrais(_id){
     this.router.navigate([`frais/${_id}`]);
   }
+  
+  goToUser(id){
+    this.router.navigate([`users/${id}`]);
+  }
 }

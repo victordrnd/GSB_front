@@ -1,8 +1,11 @@
 <div class="px-5">
+    <div class="float-right">
+        Recevoir les notifications <nz-switch nzSize="small" class="ml-2" [ngModel]="true"></nz-switch>
+    </div>
     <h2>Demandes de frais</h2>
     <div class="row">
         <nz-list class="demo-loadmore-list w-100" [nzDataSource]="listFrais" [nzItemLayout]="'horizontal'"
-            [nzLoading]="initLoading" [nzRenderItem]="item" [nzLoadMore]="loadMore">
+            [nzLoading]="initLoading" [nzRenderItem]="item">
             <ng-template #item let-frais>
                 <nz-list-item class="bg-white mt-4 p-3" (click)="showFrais(frais.id)">
                     <nz-skeleton [nzAvatar]="true" [nzActive]="true" [nzTitle]="false" [nzLoading]="false">
@@ -29,11 +32,7 @@
                     </nz-skeleton>
                 </nz-list-item>
             </ng-template>
-            <ng-template #loadMore>
-                <div class="loadmore">
-                    <button nz-button *ngIf="!loadingMore" (click)="onLoadMore()">loading more</button>
-                </div>
-            </ng-template>
+            
         </nz-list>
     </div>
 

@@ -1,7 +1,7 @@
-<nz-list class="demo-loadmore-list" [nzDataSource]="activities" [nzItemLayout]="'horizontal'" [nzLoading]="initLoading"
+<nz-list class="demo-loadmore-list" [nzDataSource]="activities" [nzItemLayout]="'horizontal'"
     [nzRenderItem]="item">
     <ng-template #item let-item>
-        <nz-list-item [nzContent]="item.loading ? '' : content" class="bg-white p-3 shadow-sm mt-3">
+        <nz-list-item [nzContent]="item.loading ? '' : content" class="bg-white p-3 shadow-sm rounded mt-3">
             <nz-skeleton [nzAvatar]="true" [nzActive]="true" [nzTitle]="false" [nzLoading]="item.loading">
                 <nz-list-item-meta [nzTitle]="nzTitle"
                     [nzAvatar]="avatar">
@@ -9,11 +9,11 @@
 
 
                         <!-- Frais -->
-                        <div *ngIf="item.action == 'created' && item.subject_type == 'frais'" class="bubble-card" (click)="goToFrais(item.subject.id)">
+                        <div *ngIf="item.action == 'created'" class="bubble-card" (click)="goToFrais(item.subject.id)">
                             <div class="ant-comment-content-author">
                                 <span class="ant-comment-content-author-name ng-star-inserted">{{item.causer.firstname}}
                                     {{item.causer.lastname}}</span>
-                                <span class="ant-comment-content-author-time ">{{item.last_updated}}</span>
+                                <!-- <span class="ant-comment-content-author-time ">{{item.last_updated}}</span> -->
                             </div>
                             <p>L'utilisateur {{item.causer.firstname}} {{item.causer.lastname}} a réalisé une nouvelle
                                 demande de frais.</p>
@@ -35,11 +35,11 @@
 
 
                         <!-- Mis à jour de frais -->
-                        <div *ngIf="item.action == 'updated' && item.subject_type == 'frais'" class="bubble-card" (click)="goToFrais(item.subject.id)">
+                        <div *ngIf="item.action == 'updated'" class="bubble-card" (click)="goToFrais(item.subject.id)">
                             <div class="ant-comment-content-author">
                                 <span class="ant-comment-content-author-name ng-star-inserted">{{item.causer.firstname}}
                                     {{item.causer.lastname}}</span>
-                                <span class="ant-comment-content-author-time ">{{item.last_updated}}</span>
+                                <!-- <span class="ant-comment-content-author-time ">{{item.last_updated}}</span> -->
                             </div>
                             <p>{{item.causer.firstname}} {{item.causer.lastname}} a mis à jour le status d'un frais vers :
                                 {{item.subject.status.libelle}}</p>
@@ -51,27 +51,6 @@
                                 Catégorie : {{item.subject.type.libelle}}
                             </div>
 
-                        </div>
-
-
-                        <!-- Utilisateur -->
-                        <div *ngIf="item.action == 'created' && item.subject_type == 'user'" class="bubble-card" (click)="goToUser(item.subject.id)">
-                            <div class="ant-comment-content-author">
-                                <span class="ant-comment-content-author-name ng-star-inserted">{{item.subject.firstname}}
-                                    {{item.subject.lastname}}</span>
-                                <span class="ant-comment-content-author-time ">{{item.last_updated}}</span>
-                            </div>
-                            L'utilisateur {{item.subject.firstname}} {{item.subject.lastname}} s'est inscrit
-                            <nz-descriptions nzTitle="Détails de l'utilisateur">
-                                <nz-descriptions-item nzTitle="Nom complet">{{item.subject.lastname}}
-                                    {{item.subject.firstname}}
-                                </nz-descriptions-item>
-                                <nz-descriptions-item nzTitle="Email">{{item.subject.email}}
-                                </nz-descriptions-item>
-                                <nz-descriptions-item nzTitle="Téléphone">
-                                    {{item.subject.phone}}
-                                </nz-descriptions-item>
-                            </nz-descriptions>
                         </div>
                     </ng-template>
                     <ng-template #avatar>

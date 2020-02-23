@@ -9,7 +9,7 @@ import { Color, BaseChartDirective, Label } from 'ng2-charts';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  lineChartData : ChartDataSets[] = [{data : [1,4,5], label : "Stock"}];
+  lineChartData : ChartDataSets[] = [{data : [1,4,5,1,3,7,10], label : "Stock"}];
   lineChartLabels;
   constructor(private fraisService : FraisService) { }
 

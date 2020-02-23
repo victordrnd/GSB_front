@@ -1,16 +1,30 @@
 <div class="px-5">
-  <h2>Activité récente</h2>
   <div class="row">
-    <div class="col-8">
+    <div class="col-7">
+      <div class="row mt-3">
+        <div class="col">
+          <div class="shadow rounded-block text-white p-4 offer">
+              <!-- <h4 class="text-white">Mon titre</h4> -->
+              <!-- <img src="../../../assets/iso-canvas-cropped.png" style="height:150px"> -->
+              <div  class="row mt-5">
+                <div class="offset-6 col-6">
+                  <h4 class="text-white text-center">Galaxy Swiss Bourdin</h4>
+                  <p class="text-center">Application de gestion des frais des salariés de la société.</p>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="mt-4">Activité récente</h2>
       <app-activity-list></app-activity-list>
     </div>
-    <div class="col-4">
+    <div class="offset-1 col-4">
       <div class="row">
         <div class="col-12">
           <div class="bg-white right-block mt-3 p-3 shadow-sm">
             <h3>Demandes traitées</h3>
 
-            <div class="d-block mx-auto w-50">
+            <div class="d-block mx-auto w-25">
               <nz-progress nz-tooltip nzType="dashboard" [nzPercent]="stats?.percentage" [nzSuccessPercent]="30"
                 nzStatus="active" [nzStrokeColor]="{ '0%': '#9b89ff', '50%': '#9b89ff', '100%': '#9b89ff' }">
               </nz-progress>
@@ -23,15 +37,12 @@
           </div>
           <div class="bg-white right-block mt-3 p-3 shadow-sm">
             <h3>test thibaut</h3>
-             <canvas baseChart #myCanvas [datasets]="lineChartData" [labels]="lineChartLabels"
+             <!-- <canvas baseChart #myCanvas [datasets]="lineChartData" [labels]="lineChartLabels"
               [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
-              [chartType]="lineChartType"></canvas>
+              [chartType]="lineChartType"></canvas> -->
           </div>
         </div>
 
       </div>
     </div>
-
-
-
   </div>

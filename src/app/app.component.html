@@ -3,7 +3,9 @@
         <app-sidebar></app-sidebar>
     </nz-sider>
     <nz-layout>
-        <app-header></app-header>
+        <div class="mx-5">
+            <app-header></app-header>
+        </div>
         <nz-content>
             <!-- <div class="row mx-0 p-0">
               <div class="col ml-5 p-0 p-md">
@@ -14,8 +16,11 @@
                   </nz-breadcrumb>
               </div>
           </div> -->
-            <div class="mx-5">
+            <div class="m-5">
                 <router-outlet></router-outlet>
+            </div>
+            <div class="spinner">
+                <app-spin></app-spin>
             </div>
         </nz-content>
     </nz-layout>
