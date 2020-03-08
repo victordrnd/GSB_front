@@ -1,0 +1,46 @@
+<form>
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="form-group">
+                <label>First Name</label>
+                <input type="text" nz-input name="lname" [formControl]="firstname" placeholder="First name" />
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" nz-input name="lname" [formControl]="lastname" placeholder="Last name" />
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" nz-input name="email" [formControl]="email" placeholder="Email" />
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="form-group">
+                <label>Téléphone</label>
+                <input type="text" nz-input name="phone" [formControl]="phone" placeholder="Téléphone" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-xl-6">
+            <div class="form-group">
+                <label>Role</label>
+                <nz-select nzShowSearch class="w-100" [formControl]="role" nzPlaceHolder="Rechercher par type">
+                    <nz-option *ngFor="let role of roles" [nzLabel]="role.libelle" [nzValue]="role.id"></nz-option>
+                </nz-select>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<div class="ant-modal-footer ng-star-inserted">
+    <button nz-button nzType="default">Annuler</button>
+    <button nz-button nzType="primary" (click)="submit()">Sauvegarder</button>
+
+</div>

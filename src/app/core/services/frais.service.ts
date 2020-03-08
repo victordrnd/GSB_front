@@ -11,14 +11,17 @@ export class FraisService {
   constructor(private http : HttpClient) { }
 
 
-  getAll(){
-    return this.http.get(`${environment.apiurl}/frais`).pipe(map((res:any) => res.result));
+  getAll(obj){
+    return this.http.post(`${environment.apiurl}/frais`, obj).pipe(map((res:any) => res.result));
   }
 
   findById(id){
     return this.http.get(`${environment.apiurl}/frais/show/${id}`).pipe(map((res:any) => res.result));
   }
   
+  getAllType(){
+    return this.http.get(`${environment.apiurl}/frais/types`).pipe(map((res:any) => res.result));
+  }
 
   update(frais){
     return this.http.post(`${environment.apiurl}/frais/update/status`,frais).pipe(map((res:any) => res.result));

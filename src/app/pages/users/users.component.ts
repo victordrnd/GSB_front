@@ -12,10 +12,20 @@ export class UsersComponent implements OnInit {
   constructor(private utilisateurService : UtilisateurService,
     private router : Router) { }
 
+  filters = {
+    keyword : null,
+    role_id : null
+  }
+  roles;
   users : Array<any>;
   async ngOnInit() {
-    this.users = await this.utilisateurService.getAllUsers().toPromise();
+    this.users = await this.utilisateurService.getAllUsers(this.filters).toPromise();
+    this.roles = await this.utilisateurService.getAllRoles().toPromise()
     console.log(this.users);
+  }
+
+  async getUsers(){
+    this.users = await this.utilisateurService.getAllUsers(this.filters).toPromise();
   }
 
 

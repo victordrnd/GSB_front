@@ -5,17 +5,15 @@
                 <div class="row">
                     <div class="col-3">
                         <nz-input-group [nzPrefix]="suffixIconSearch">
-                            <input type="text" nz-input placeholder="Rechercher par nom" />
+                            <input type="text" [(ngModel)]="filters.keyword" (input)="getUsers()" nz-input placeholder="Rechercher par nom" />
                         </nz-input-group>
                         <ng-template #suffixIconSearch>
                             <i nz-icon nzType="search"></i>
                         </ng-template>
                     </div>
                     <div class="col-3">
-                        <nz-select nzShowSearch class="w-100" nzAllowClear nzPlaceHolder="Selectionnez un rôle">
-                            <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
-                            <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
-                            <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+                        <nz-select nzShowSearch class="w-100" [(ngModel)]="filters.role_id" (ngModelChange)="getUsers()"  nzAllowClear nzPlaceHolder="Selectionnez un rôle">
+                            <nz-option *ngFor="let role of roles" [nzLabel]="role.libelle" [nzValue]="role.id"></nz-option>
                           </nz-select>
                     </div>
                 </div>

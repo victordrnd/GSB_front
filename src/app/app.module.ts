@@ -25,6 +25,8 @@ import { UserDetailsComponent } from './pages/users/user-details/user-details.co
 import { SpinComponent } from './shared/spin/spin.component';
 import { UserActivityListComponent } from './pages/users/user-details/user-activity-list/user-activity-list.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import { FraisFilterComponent } from './pages/frais/frais-filter/frais-filter.component';
+import { UserEditComponent } from './pages/users/user-edit/user-edit.component';
 registerLocaleData(fr);
 
 
@@ -41,7 +43,9 @@ registerLocaleData(fr);
     UsersComponent,
     UserDetailsComponent,
     SpinComponent,
-    UserActivityListComponent
+    UserActivityListComponent,
+    FraisFilterComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +59,9 @@ registerLocaleData(fr);
     AngularFireMessagingModule,
     AngularFireModule.initializeApp(environment.firebase),
     ScrollingModule
+  ],
+  entryComponents : [
+    UserEditComponent
   ],
   providers: [
     { provide: NZ_I18N, useValue: fr_FR },
