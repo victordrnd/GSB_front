@@ -24,4 +24,8 @@ export class UtilisateurService {
   update(user){
     return this.http.post(`${environment.apiurl}/users/${user.id}`, user).pipe(map((res:any) => res.result))
   }
+
+  delete(user){
+    return this.http.delete(`${environment.apiurl}/users/delete/${user.id}`).pipe(map((res:any) => res.result));
+  }
 }

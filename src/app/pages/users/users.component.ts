@@ -21,7 +21,6 @@ export class UsersComponent implements OnInit {
   async ngOnInit() {
     this.users = await this.utilisateurService.getAllUsers(this.filters).toPromise();
     this.roles = await this.utilisateurService.getAllRoles().toPromise()
-    console.log(this.users);
   }
 
   async getUsers(){

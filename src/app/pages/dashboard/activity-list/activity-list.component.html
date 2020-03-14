@@ -1,4 +1,4 @@
-<nz-list class="demo-loadmore-list" [nzDataSource]="activities" [nzItemLayout]="'horizontal'" [nzLoading]="initLoading"
+<nz-list class="demo-loadmore-list" [nzDataSource]="activities" [nzItemLayout]="'horizontal'"
     [nzRenderItem]="item">
     <ng-template #item let-item>
         <nz-list-item [nzContent]="item.loading ? '' : content" class="bg-white p-3 shadow-sm mt-3">

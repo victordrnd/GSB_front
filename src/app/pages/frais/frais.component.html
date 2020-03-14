@@ -6,7 +6,7 @@
     <h2>Demandes de frais</h2>
     <div class="row">
         <nz-list class="demo-loadmore-list w-100" [nzDataSource]="listFrais" [nzItemLayout]="'horizontal'"
-            [nzLoading]="initLoading" [nzRenderItem]="item">
+             [nzRenderItem]="item">
             <ng-template #item let-frais>
                 <nz-list-item class="bg-white mt-4 p-3" (click)="showFrais(frais.id)">
                     <nz-skeleton [nzAvatar]="true" [nzActive]="true" [nzTitle]="false" [nzLoading]="false">

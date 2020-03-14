@@ -14,7 +14,6 @@ export class UserActivityListComponent implements OnInit {
 
   @Input() activities;
   ngOnInit() {
-    console.log(this.activities)
   }
 
 

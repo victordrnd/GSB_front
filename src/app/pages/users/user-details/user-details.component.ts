@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UtilisateurService } from 'src/app/core/services/utilisateur.service';
-import { NzModalService } from 'ng-zorro-antd';
+import { NzModalService, NzNotificationService } from 'ng-zorro-antd';
 import { UserEditComponent } from '../user-edit/user-edit.component';
 
 @Component({
@@ -13,13 +13,14 @@ export class UserDetailsComponent implements OnInit {
 
   constructor(private route : ActivatedRoute,
     private userService : UtilisateurService,
-    private modalService : NzModalService) { }
+    private modalService : NzModalService,
+    private notificationService : NzNotificationService,
+    private router : Router) { }
 
   user;
   async ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
     this.user = await this.userService.getUser(id).toPromise();
-    console.log(this.user);
   }
 
   getAvatarLetter(){
@@ -37,6 +38,13 @@ export class UserDetailsComponent implements OnInit {
     modalRef.afterClose.subscribe(async event => {
       this.user = await this.userService.getUser(this.user.id).toPromise();
     })
+  }
+
+
+  deleteUser(){
+    this.userService.delete(this.user).toPromise();
+    this.notificationService.success("Supprimé", "L'utilisateur a été supprimé");
+    this.router.navigate(['users']);
   }
 
 }

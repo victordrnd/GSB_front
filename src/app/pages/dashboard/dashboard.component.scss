@@ -1,18 +1,24 @@
 .right-block {
-    border-radius: 20px;
-    width: 100%;
+  border-radius: 20px;
+  width: 100%;
 }
 
-.rounded-block{
-    border-radius: 20px;
-    background-color: #9b89ff;
+.rounded-block {
+  border-radius: 20px;
+  background-color: #9b89ff;
 }
 
-.offer{
-    background-image: url('../../../assets/iso-canvas-cropped.png');
-    background-repeat: no-repeat;
-    background-size: 58%;
-    background-position-x: -32px;
-    background-position-y: -6px;
-    height: 250px;
+.offer {
+  background-image: url("../../../assets/iso-canvas-cropped.png");
+  background-repeat: no-repeat;
+  background-size: 58%;
+  background-position-x: -32px;
+  background-position-y: -6px;
+  height: 250px;
+}
+
+:host::ng-deep {
+  .ngx-charts {
+    margin-top: 23px !important;
+  }
 }

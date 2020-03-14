@@ -22,7 +22,7 @@
                 <nz-avatar  nz-comment-avatar [nzText]="getAvatarLetter(frais)"></nz-avatar>
                 <nz-comment-content>
                   <p>{{frais?.description}}</p>
-                  <img *ngIf="frais" src="{{environement.assetsUrl}}{{frais?.photo_url}}" class="mx-auto d-block border-0" style="max-height:90vh;max-width:100%">
+                  <img *ngIf="frais" (click)="openImage()" src="{{environement.assetsUrl}}{{frais?.photo_url}}" class="mx-auto d-block border-0" style="max-height:90vh;max-width:100%" id="image">
                 </nz-comment-content>
               </nz-comment>
               

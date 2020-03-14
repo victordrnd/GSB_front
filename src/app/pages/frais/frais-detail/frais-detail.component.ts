@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FraisService } from 'src/app/core/services/frais.service';
 import { StatusService } from 'src/app/core/services/status.service';
@@ -10,7 +10,7 @@ import {environment} from "../../../../environments/environment";
   styleUrls: ['./frais-detail.component.scss']
 })
 export class FraisDetailComponent implements OnInit {
-
+  @ViewChild('img', null) image;
   constructor(private route : ActivatedRoute,
     private fraisService:  FraisService,
     private statusService : StatusService,
@@ -27,6 +27,7 @@ export class FraisDetailComponent implements OnInit {
       this.frais = await this.fraisService.findById(value.id).toPromise();
     });
     this.status = await this.statusService.getAll().toPromise();
+    
   }
 
   getAvatarLetter(item) {
@@ -40,4 +41,15 @@ export class FraisDetailComponent implements OnInit {
     this.notificationService.success("Succès", "Le statut du frais a été modifié")
   }
 
+  openImage(){
+    const Viewer = require('viewerjs'); 
+    const viewer = new Viewer(document.getElementById('image'),  {
+      inline: true,  
+      viewed() {
+        viewer.zoomTo(0.5);
+      },
+    });
+  }
+
 }
+ 

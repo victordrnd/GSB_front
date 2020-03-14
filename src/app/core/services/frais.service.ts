@@ -30,4 +30,8 @@ export class FraisService {
   stats(){
     return this.http.get(`${environment.apiurl}/frais/stats`).pipe(map((res:any) => res.result));
   }
+
+  groupByType(){
+    return this.http.get(`${environment.apiurl}/frais/types/count`).pipe(map((res:any) => res.result));
+  }
 }

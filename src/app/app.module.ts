@@ -16,7 +16,7 @@ import { HttpTokenInterceptor } from './core/interceptors/http.token.interceptor
 import { ActivityListComponent } from './pages/dashboard/activity-list/activity-list.component';
 import { FraisComponent } from './pages/frais/frais.component';
 import { FraisDetailComponent } from './pages/frais/frais-detail/frais-detail.component';
-import { ChartsModule } from 'ng2-charts';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
@@ -55,10 +55,10 @@ registerLocaleData(fr);
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    ChartsModule,
+    NgxChartsModule,
     AngularFireMessagingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    ScrollingModule
+    ScrollingModule,
   ],
   entryComponents : [
     UserEditComponent

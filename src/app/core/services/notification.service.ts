@@ -29,15 +29,6 @@ export class NotificationService {
    */
   requestPermission() {
     return this.angularFireMessaging.requestToken
-    this.angularFireMessaging.requestToken.subscribe(
-      (token) => {
-        console.log(token);
-        return token;
-      },
-      (err) => {
-        console.error('Unable to get permission to notify.', err);
-      }
-    );
   }
 
   /**
@@ -46,7 +37,6 @@ export class NotificationService {
   receiveMessage() {
     this.angularFireMessaging.messages.subscribe(
       (payload) => {
-        console.log("new message received. ", payload);
       })
   }
 }
