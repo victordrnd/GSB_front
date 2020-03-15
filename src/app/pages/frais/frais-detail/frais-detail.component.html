@@ -30,7 +30,7 @@
           </nz-descriptions>
     </div>
     <div class="col">
-      <div class="bg-white rounded shadow-sm p-3">
+      <div class="bg-white rounded shadow-sm p-3" *ngxPermissionsOnly="'frais.edit-status'">
         <h6 class="font-weight-bold">Modifier le statut</h6>
         <p nz-text nzType="secondary">
            Toute validation est définitive et ne pourra pas être modifiée</p> 

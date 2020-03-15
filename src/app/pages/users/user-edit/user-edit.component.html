@@ -27,7 +27,7 @@
     </div>
     <div class="row">
 
-        <div class="col-xl-6">
+        <div class="col-xl-6" *ngxPermissionsOnly="'users.edit-role'">
             <div class="form-group">
                 <label>Role</label>
                 <nz-select nzShowSearch class="w-100" [formControl]="role" nzPlaceHolder="Rechercher par type">

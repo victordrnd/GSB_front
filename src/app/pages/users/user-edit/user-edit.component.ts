@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UtilisateurService } from 'src/app/core/services/utilisateur.service';
 import { NzModalService, NzNotificationService } from 'ng-zorro-antd';
+import { RoleService } from 'src/app/core/services/role.service';
 
 @Component({
   selector: 'app-user-edit',
@@ -13,7 +14,8 @@ export class UserEditComponent implements OnInit {
 
   constructor(private userFB : FormBuilder, private userService : UtilisateurService,
     private notificationService : NzNotificationService,
-    private modalService : NzModalService) { }
+    private modalService : NzModalService,
+    private roleService : RoleService) { }
   @Input() user;
 
 
@@ -26,7 +28,7 @@ export class UserEditComponent implements OnInit {
 			phone: [this.user.phone, Validators.required],
 			role: [this.user.role.id, Validators.required],
 		});
-    this.roles = await this.userService.getAllRoles().toPromise();
+    this.roles = await this.roleService.getAllRoles().toPromise();
 
   }
 

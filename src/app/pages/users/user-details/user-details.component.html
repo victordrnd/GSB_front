@@ -16,7 +16,7 @@
                 <p class="text-center"><i class="feather icon-map-pin"></i> Lyon, FR
                     <nz-badge nzColor="#5f5f5f" class="ml-2"></nz-badge> Depuis {{user.created_at | date:'MMM yyyy'}}
                 </p>
-                <button nz-button nzType="primary" class="mx-4" style="width:91%" (click)="editUser()">Editer
+                <button *ngxPermissionsOnly="'users.edit'" nz-button nzType="primary" class="mx-4" style="width:91%" (click)="editUser()">Editer
                     l'utilisateur <i class="feather icon-edit-2"></i></button>
                 <p class="text-muted text-center mt-4"><i class="feather icon-flag"></i> Signaler cet utilisateur</p>
                 <nz-divider class="mt-5"></nz-divider>
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="float-right mx-4">
-                <button nz-button nzType="danger" (nzOnConfirm)="deleteUser()" nz-popconfirm nzPopconfirmTitle="Voulez vous vraiment supprimer cet utilisateur ?" class="float-right" [nzSize]="'small'" nzShape="round">
+                <button *ngxPermissionsOnly="'users.delete'" nz-button nzType="danger" (nzOnConfirm)="deleteUser()" nz-popconfirm nzPopconfirmTitle="Voulez vous vraiment supprimer cet utilisateur ?" class="float-right" [nzSize]="'small'" nzShape="round">
                     Supprimer
                 </button>
             </div>

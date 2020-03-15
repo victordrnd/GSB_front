@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UtilisateurService } from 'src/app/core/services/utilisateur.service';
 import { Router } from '@angular/router';
+import { RoleService } from 'src/app/core/services/role.service';
 
 @Component({
   selector: 'app-users',
@@ -10,7 +11,8 @@ import { Router } from '@angular/router';
 export class UsersComponent implements OnInit {
 
   constructor(private utilisateurService : UtilisateurService,
-    private router : Router) { }
+    private router : Router,
+    private roleService : RoleService) { }
 
   filters = {
     keyword : null,
@@ -20,7 +22,7 @@ export class UsersComponent implements OnInit {
   users : Array<any>;
   async ngOnInit() {
     this.users = await this.utilisateurService.getAllUsers(this.filters).toPromise();
-    this.roles = await this.utilisateurService.getAllRoles().toPromise()
+    this.roles = await this.roleService.getAllRoles().toPromise()
   }
 
   async getUsers(){

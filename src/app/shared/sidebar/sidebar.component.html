@@ -1,20 +1,29 @@
 <div class="top-menu " *ngIf="!isAuthRoute()">
-    <img src="../../../assets/logo.png" width="40" class="d-block mx-auto pt-5"/>
+    <img src="../../../assets/logo.png" width="40" class="d-block mx-auto pt-5" />
 </div>
 <ul nz-menu nzMode="inline" *ngIf="!isAuthRoute()">
     <li nz-menu-item nzIcon="test"></li>
-    <li nz-menu-item routerLink="/dashboard"  nzIcon="home"><i class="feather icon-inbox"></i></li>
-    <li nz-menu-item routerLink="/frais" nzIcon="home"><i class="feather icon-clipboard"></i></li>
-    <li nz-menu-item routerLink="/users" nzIcon="home"><i class="feather icon-users"></i></li>
-    <li nz-menu-item nzIcon="home"><i class="feather icon-settings"></i></li>
+    <li nz-menu-item routerLink="/dashboard" nzIcon="home"><i class="feather icon-inbox"></i></li>
+    <li nz-menu-item *ngxPermissionsOnly="'frais.view'" routerLink="/frais" nzIcon="home"><i class="feather icon-clipboard"></i></li>
+    <li nz-menu-item *ngxPermissionsOnly="'users.view'" routerLink="/users" nzIcon="home"><i class="feather icon-users"></i></li>
+    <li nz-menu-item routerLink="/settings" nzIcon="home"><i class="feather icon-settings"></i></li>
     <li nz-menu-item nzIcon="test"></li>
-</ul>
+</ul> 
 <div class="bottom-menu " *ngIf="!isAuthRoute()">
-    
+
     <div class="pt-5">
-        <nz-avatar nzText="VD" style="color:#9b89ff; background-color:#ffffff;margin-top:20vh" class="d-block mx-auto"></nz-avatar>
+        <a nz-dropdown [nzDropdownMenu]="menu">
+            <nz-avatar nzText="VD" style="color:#9b89ff; background-color:#ffffff;margin-top:20vh"
+                class="d-block mx-auto">
+            </nz-avatar>
+        </a>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item>1st menu item length</li>
+                <li nz-menu-item>2nd menu item length</li>
+                <li nz-menu-item>3rd menu item length</li>
+            </ul>
+        </nz-dropdown-menu>
     </div>
-    
+
 </div>
-
-

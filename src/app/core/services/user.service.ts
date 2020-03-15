@@ -5,6 +5,7 @@ import { BehaviorSubject, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { NotificationService } from './notification.service';
 import { Router } from '@angular/router';
+import { NgxPermissionsService } from 'ngx-permissions';
 //import { NgxPermissionsService } from 'ngx-permissions';
 
 @Injectable({
@@ -23,9 +24,7 @@ export class UserService {
 
   public permissions : Array<any>;
   constructor(private http : HttpClient,
-    private messagingService : NotificationService,
-    private router : Router
-    //private permissionsService : NgxPermissionsService
+    private permissionsService : NgxPermissionsService
     ) { }
 
   async populate() {
@@ -48,13 +47,13 @@ export class UserService {
     }
   }
 
-  setAuth({ user, token }: any) {
+  async setAuth({ user, token }: any) {
     if(token){
-      this.saveToken(token);
+      this.saveToken(token);      
     }
+    const permissions = await this.loadPermissions().toPromise();
+    this.permissionsService.loadPermissions(permissions);
     this.currentUserSubject.next(user);
-    //this.permissions = user.permissions;
-    //this.permissionsService.loadPermissions(this.permissions);
     this.isAuthenticatedSubject.next(true);
   }
 
@@ -98,4 +97,7 @@ export class UserService {
     localStorage.removeItem('token');
   }
 
+  loadPermissions(){
+    return this.http.get(`${environment.apiurl}/auth/permissions`).pipe(map((res:any) => res.result));
+  }
 }

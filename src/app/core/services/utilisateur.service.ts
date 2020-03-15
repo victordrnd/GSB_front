@@ -17,9 +17,7 @@ export class UtilisateurService {
   getUser(id){
     return this.http.get(`${environment.apiurl}/users/${id}`).pipe(map((res:any) => res.result));
   }
-  getAllRoles(){
-    return this.http.get(`${environment.apiurl}/roles`).pipe(map((res:any) => res.result));
-  }
+  
 
   update(user){
     return this.http.post(`${environment.apiurl}/users/${user.id}`, user).pipe(map((res:any) => res.result))

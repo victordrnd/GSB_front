@@ -6,6 +6,9 @@ import { FraisComponent } from './pages/frais/frais.component';
 import { FraisDetailComponent } from './pages/frais/frais-detail/frais-detail.component';
 import { UsersComponent } from './pages/users/users.component';
 import { UserDetailsComponent } from './pages/users/user-details/user-details.component';
+import { AuthGuardService } from './core/guards/auth-guard.service';
+import { NgxPermissionsGuard } from 'ngx-permissions';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 
 const routes: Routes = [
@@ -16,14 +19,22 @@ const routes: Routes = [
 
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate : [AuthGuardService]
   },
   {
     path: 'frais',
+    canActivate : [AuthGuardService],
     children: [
       {
         path: '',
-        component: FraisComponent
+        component: FraisComponent,
+        canActivate : [NgxPermissionsGuard],
+        data : {
+          permissions: {
+            only : "frais.view"
+          }
+        }
       },
       {
         path: ':id',
@@ -33,14 +44,31 @@ const routes: Routes = [
   },
   {
     path: 'users',
+    canActivate : [AuthGuardService],
     children: [
       {
         path: '',
-        component: UsersComponent
+        component: UsersComponent,
+        canActivate : [NgxPermissionsGuard],
+        data : {
+          permissions: {
+            only : "users.view"
+          }
+        }
       },
       {
         path : ':id',
         component : UserDetailsComponent
+      }
+    ]
+  },
+  {
+    path : 'settings',
+    canActivate: [AuthGuardService],
+    children : [
+      {
+        path : '',
+        component : SettingsComponent
       }
     ]
   }
