@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
       },
       err => this.notificationService.error("Identifiants incorrects", "Les identifiants saisis ne correspondent à aucun compte.")
       )
-    })
+    }, err => console.log(err))
 
 
   }

@@ -29,6 +29,7 @@ import { FraisFilterComponent } from './pages/frais/frais-filter/frais-filter.co
 import { UserEditComponent } from './pages/users/user-edit/user-edit.component';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { TrendModule } from 'ngx-trend';
 registerLocaleData(fr);
 
 
@@ -62,7 +63,8 @@ registerLocaleData(fr);
     AngularFireMessagingModule,
     AngularFireModule.initializeApp(environment.firebase),
     ScrollingModule,
-    NgxPermissionsModule.forRoot()
+    NgxPermissionsModule.forRoot(),
+    TrendModule
   ],
   entryComponents : [
     UserEditComponent

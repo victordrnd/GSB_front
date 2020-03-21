@@ -22,7 +22,7 @@
       <div class="row">
         <div class="col-12">
           <div class="bg-white right-block mt-3 p-3 shadow-sm">
-            <h3>Demandes traitées</h3>
+            <h6>Demandes traitées</h6>
 
             <div class="d-block mx-auto w-25">
               <nz-progress nz-tooltip nzType="dashboard" [nzPercent]="stats?.percentage" [nzSuccessPercent]="30"
@@ -35,10 +35,19 @@
             </div>
 
           </div>
-          <div class="bg-white right-block mt-3 p-3 shadow-sm" style="min-height:450px;">
-            <ngx-charts-bar-vertical [gradient]="false" [view]="[450,400]" [scheme]="colorScheme" [results]="data"
+          <div class="bg-white right-block mt-3 p-3 shadow-sm" style="min-height:350px;">
+            <ngx-charts-bar-vertical [gradient]="false" [view]="[400,300]" [scheme]="colorScheme" [results]="data"
               [xAxis]="true" [yAxis]="true">
             </ngx-charts-bar-vertical>
+          </div>
+        </div>
+        <div class="col-12"> 
+          <div class="bg-white right-block mt-3 p-3 shadow-sm" style="min-height:250px;">
+            <h6>Activités <small class="text-muted text-small text-right float-right">[{{stats?.by_date?.from | date}} - {{stats?.by_date?.to | date}}]</small></h6>
+            <ngx-trend autoDraw="true" autoDrawDuration="3000" autoDrawEasing="ease-out" smooth="true"
+              [data]="stats?.by_date?.values" [gradient]="['#9b89ff', '#a270d6', '#9f76da', '#9b89ff', '#9880e2', '#917ce5', '#9b89ff', '#8274ec', '#7466f0', '#6457f3', '#5148f6', '#3838f8']" radius="10"
+              strokeWidth="2" strokeLinecap="butt" height="200" width="450">
+            </ngx-trend>  
           </div>
         </div>
 

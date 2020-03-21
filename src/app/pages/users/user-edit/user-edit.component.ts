@@ -45,9 +45,13 @@ export class UserEditComponent implements OnInit {
     } 
     await this.userService.update(newUser).toPromise();
     this.notificationService.success("Mis à jour", "L'utilisateur a correctement été mis à jour");
-    this.modalService.openModals[0].close();
+    this.close()
   }
 
+
+  close(){
+    this.modalService.openModals[0].close();
+  }
   get lastname() {
 		return this.userForm.get("lastname");
 	}

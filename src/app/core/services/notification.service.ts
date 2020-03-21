@@ -25,7 +25,6 @@ export class NotificationService {
   /**
    * request permission for notification from firebase cloud messaging
    * 
-   * @param userId userId
    */
   requestPermission() {
     return this.angularFireMessaging.requestToken
