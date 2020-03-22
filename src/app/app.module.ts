@@ -49,7 +49,7 @@ registerLocaleData(fr);
     UserActivityListComponent,
     FraisFilterComponent,
     UserEditComponent,
-    SettingsComponent
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

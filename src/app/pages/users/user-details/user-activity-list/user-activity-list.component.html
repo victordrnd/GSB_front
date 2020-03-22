@@ -1,4 +1,4 @@
-<cdk-virtual-scroll-viewport [itemSize]="activities.length" style="height:90vh">
+<cdk-virtual-scroll-viewport [itemSize]="activities.length" style="height:75vh">
     <nz-list class="demo-loadmore-list" [nzDataSource]="activities" [nzItemLayout]="'horizontal'" [nzRenderItem]="item">
         <ng-template #item let-item>
             <nz-list-item [nzContent]="item.loading ? '' : content" class="bg-white p-3 shadow-sm rounded mt-3">

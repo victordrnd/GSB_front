@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UtilisateurService } from 'src/app/core/services/utilisateur.service';
 import { NzModalService, NzNotificationService } from 'ng-zorro-antd';
 import { UserEditComponent } from '../user-edit/user-edit.component';
+import { PdfService } from 'src/app/core/services/pdf.service';
 
 @Component({
   selector: 'app-user-details',
@@ -15,9 +16,13 @@ export class UserDetailsComponent implements OnInit {
     private userService : UtilisateurService,
     private modalService : NzModalService,
     private notificationService : NzNotificationService,
-    private router : Router) { }
+    private router : Router,
+    private pdfService : PdfService) { }
 
   user;
+  exportFrais = {
+    dateRange : []
+  } 
   async ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
     this.user = await this.userService.getUser(id).toPromise();
@@ -47,4 +52,18 @@ export class UserDetailsComponent implements OnInit {
     this.router.navigate(['users']);
   }
 
+
+  onDateRangeChange(value) {
+    this.exportFrais.dateRange = value.length ? value.map(date => {
+      const t = new Date(date)
+      let month = (t.getMonth()+1)
+      // Add 0 to month if 2 and add nothing if 11 for example
+      return t.getFullYear() + "-" + ('0' + month).slice(-2)  + "-" + ('0' + t.getDate()).slice(-2);
+    }) : null;
+    console.log(this.exportFrais.dateRange);
+  }
+
+  export(){
+    this.pdfService.export(this.exportFrais.dateRange[0], this.exportFrais.dateRange[1], this.user);
+  }
 }

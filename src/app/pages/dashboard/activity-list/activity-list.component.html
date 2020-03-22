@@ -1,3 +1,4 @@
+<cdk-virtual-scroll-viewport [itemSize]="activities?.length" style="height:55vh">
 <nz-list class="demo-loadmore-list" [nzDataSource]="activities" [nzItemLayout]="'horizontal'"
     [nzRenderItem]="item">
     <ng-template #item let-item>
@@ -85,3 +86,4 @@
         </nz-list-item>
     </ng-template>
 </nz-list>
+</cdk-virtual-scroll-viewport>

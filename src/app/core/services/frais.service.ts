@@ -34,4 +34,13 @@ export class FraisService {
   groupByType(){
     return this.http.get(`${environment.apiurl}/frais/types/count`).pipe(map((res:any) => res.result));
   }
+
+  export(from, to, user_id = null){
+    let obj = {
+      from : from,
+      to : to,
+      user_id : user_id
+    }
+    return this.http.post(`${environment.apiurl}/frais/export`, obj).pipe(map((res:any) => res.result));
+  }
 }

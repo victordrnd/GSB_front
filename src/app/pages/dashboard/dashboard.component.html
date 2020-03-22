@@ -29,24 +29,24 @@
                 nzStatus="active" [nzStrokeColor]="{ '0%': '#9b89ff', '50%': '#9b89ff', '100%': '#9b89ff' }">
               </nz-progress>
             </div>
-            <div *ngFor="let stat of stats?.stats">
+            <div *ngFor="let stat of stats?.stats" class="d-inline mr-4" >
               <nz-badge [nzColor]="stat.status.color" nzText="{{stat.count}} {{stat.status.libelle}}"></nz-badge>
-              <br />
+              
             </div>
 
           </div>
-          <div class="bg-white right-block mt-3 p-3 shadow-sm" style="min-height:350px;">
-            <ngx-charts-bar-vertical [gradient]="false" [view]="[400,300]" [scheme]="colorScheme" [results]="data"
+          <div class="bg-white right-block mt-3 px-3 py-2 shadow-sm" style="min-height:340px;">
+            <ngx-charts-bar-vertical [gradient]="false" [view]="[340,300]" [scheme]="colorScheme" [results]="data"
               [xAxis]="true" [yAxis]="true">
             </ngx-charts-bar-vertical>
-          </div>
+          </div> 
         </div>
         <div class="col-12"> 
-          <div class="bg-white right-block mt-3 p-3 shadow-sm" style="min-height:250px;">
+          <div class="bg-white right-block mt-3 p-3 shadow-sm" style="min-height:150px;">
             <h6>Activités <small class="text-muted text-small text-right float-right">[{{stats?.by_date?.from | date}} - {{stats?.by_date?.to | date}}]</small></h6>
             <ngx-trend autoDraw="true" autoDrawDuration="3000" autoDrawEasing="ease-out" smooth="true"
               [data]="stats?.by_date?.values" [gradient]="['#9b89ff', '#a270d6', '#9f76da', '#9b89ff', '#9880e2', '#917ce5', '#9b89ff', '#8274ec', '#7466f0', '#6457f3', '#5148f6', '#3838f8']" radius="10"
-              strokeWidth="2" strokeLinecap="butt" height="200" width="450">
+              strokeWidth="2" strokeLinecap="butt" height="150" width="400">
             </ngx-trend>  
           </div>
         </div>
