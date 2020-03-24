@@ -21,4 +21,4 @@ deploy_stage:
     - ls
     - sshpass -V
     - export SSHPASS=$USER_PASS 
-    - sshpass -e scp -o stricthostkeychecking=no -r $PWD/* clauger@$USER_HOST:$TARGET_PATH
+    - sshpass -e scp -o stricthostkeychecking=no -r $PWD/* victor@$USER_HOST:$TARGET_PATH

@@ -4,6 +4,7 @@ import { FraisService } from 'src/app/core/services/frais.service';
 import { StatusService } from 'src/app/core/services/status.service';
 import { NzNotificationService } from 'ng-zorro-antd';
 import {environment} from "../../../../environments/environment";
+import Viewer from 'viewerjs';
 @Component({
   selector: 'app-frais-detail',
   templateUrl: './frais-detail.component.html',
@@ -42,7 +43,6 @@ export class FraisDetailComponent implements OnInit {
   }
 
   openImage(){
-    const Viewer = require('viewerjs'); 
     const viewer = new Viewer(document.getElementById('image'),  {
       inline: true,  
       viewed() {
@@ -52,4 +52,4 @@ export class FraisDetailComponent implements OnInit {
   }
 
 }
- 
+  

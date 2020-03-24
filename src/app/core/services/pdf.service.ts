@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import pdfMake from 'pdfmake/build/pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts.js';
 import { environment } from 'src/environments/environment';
 import { FraisService } from 'src/app/core/services/frais.service';
 import { timingSafeEqual } from 'crypto';
@@ -45,7 +45,8 @@ export class PdfService {
         author: 'Galaxy-Swiss Bourdin',
         subject: this.user ? `Fiche de frais ${this.user.firstname} ${this.user.lastname}` : "Fiche récapitulative",
       },
-      styles: {
+      watermark: { text: 'Galaxy-Swiss Bourdin', color: '#9b89ff', opacity: 0.3, bold: true, italics: false },
+      styles: { 
         header: {
           fontSize: 18,
           bold: true,
@@ -59,6 +60,15 @@ export class PdfService {
         tableHeader: {
           bold: true,
         }
+      },
+      // defaultStyle: {
+      //   font: 'Helvetica'
+      // },
+      header: {
+        image: this.logo,
+        width: 55,
+        margin : 20,
+        alignment: 'right'
       },
       content: [
         {
@@ -84,13 +94,6 @@ export class PdfService {
               text: 'Date : ' + (new Date(Date.now())).toLocaleString('fr-Fr'),
             }
             ],
-            [
-              {
-                image: this.logo,
-                width: 55,
-                alignment: 'right'
-              }
-            ]
           ]
         },
         {
@@ -125,11 +128,16 @@ export class PdfService {
         { 
           qr: `MECARD:N:${this.user.lastname},${this.user.firstname};ADR:58 Rue Pierre Dupont 69004 Croix Rousse ;Note: Visiteur chez GSB;TEL:${this.user.phone};EMAIL:${this.user.lastname}@gsb.com;;`,
           fit: '105',
+          margin : [0,120,0,0],
           alignment : 'left',
-          margin : [0,170,0,0]
         },
-
-      ]
+      ],
+      footer: {
+        columns: [
+          
+          { text: 'Copyright ® Galaxy Swiss Bourdin', alignment: 'right', margin : 20 }
+        ]
+      },
     };
   }
 
