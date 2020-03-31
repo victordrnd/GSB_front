@@ -25,7 +25,7 @@
 <div class="bottom-menu" *ngIf="!isAuthRoute()">
     <div class="pt-5"   >
         <a nz-dropdown [nzDropdownMenu]="menu">
-            <nz-avatar nzText="VD" style="color:#9b89ff; background-color:#ffffff;margin-top:20vh" class="d-block mx-auto">
+            <nz-avatar [nzText]="user?.firstname?.charAt(0) + user?.lastname?.charAt(0)" style="color:#9b89ff; background-color:#ffffff;margin-top:20vh" class="d-block mx-auto">
             </nz-avatar>
         </a>
     </div>

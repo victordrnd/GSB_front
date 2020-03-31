@@ -14,7 +14,9 @@ export class SidebarComponent implements OnInit {
     private dropDownService : NzContextMenuService,
     private authService : UserService) { }
   @ViewChild('menu', null) menu
+  user;
   ngOnInit() {
+    this.authService.currentUser.subscribe(user => this.user = user)
   }
 
 
