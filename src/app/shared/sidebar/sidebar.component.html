@@ -10,7 +10,7 @@
             class="feather icon-clipboard"></i></li>
     <li nz-menu-item *ngxPermissionsOnly="'users.view'" routerLink="/users" nzIcon="home"><i
             class="feather icon-users"></i></li>
-    <li nz-menu-item routerLink="/settings" nzIcon="home"><i class="feather icon-settings"></i></li>
+    <li nz-menu-item *ngxPermissionsOnly="'permissions.edit'" routerLink="/settings" nzIcon="home"><i class="feather icon-settings"></i></li>
     <li nz-menu-item nzIcon="test"></li>
 </ul>
 </div>
