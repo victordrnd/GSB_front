@@ -28,6 +28,6 @@ export class SettingsComponent implements OnInit {
     }else{
       await this.roleService.removePermissions(role_id, event.list).toPromise();
     }
-    this.notificationService.info('Succès', "Les permissions ont été mis à jour");
+    this.notificationService.info('Succès', "Les permissions ont été mises à jour");
   }
 }
