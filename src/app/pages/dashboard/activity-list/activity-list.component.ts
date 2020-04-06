@@ -1,22 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivityService } from 'src/app/core/services/activity.service';
 import { Router } from '@angular/router';
+import { SocketService } from 'src/app/core/services/socket.service';
 
 @Component({
   selector: 'app-activity-list',
   templateUrl: './activity-list.component.html',
   styleUrls: ['./activity-list.component.scss']
 })
-export class ActivityListComponent implements OnInit {
+export class ActivityListComponent implements OnInit, OnDestroy {
 
   constructor(private activityService : ActivityService,
-    private router : Router) { }
+    private router : Router,
+    private socketService : SocketService) { }
 
   activities;
-  async ngOnInit() {
-    this.activities = await this.activityService.getAll().toPromise();
+  _fraisSub;
+  ngOnInit() {
+    this.getData();
+    this._fraisSub = this.socketService.newFraisEvent.subscribe(ev => {
+      this.getData();
+    })
   }
 
+
+  async getData(){
+    this.activities = await this.activityService.getAll().toPromise();
+  }
 
 
 
@@ -34,5 +44,9 @@ export class ActivityListComponent implements OnInit {
   
   goToUser(id){
     this.router.navigate([`users/${id}`]);
+  }
+
+  ngOnDestroy(){
+    this._fraisSub.unsubscribe();
   }
 }

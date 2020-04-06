@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { NotificationService } from './notification.service';
 import { Router } from '@angular/router';
 import { NgxPermissionsService } from 'ngx-permissions';
+import { Socket } from 'ngx-socket-io';
 //import { NgxPermissionsService } from 'ngx-permissions';
 
 @Injectable({
@@ -24,8 +25,8 @@ export class UserService {
 
   public permissions : Array<any>;
   constructor(private http : HttpClient,
-    private permissionsService : NgxPermissionsService
-    ) { }
+    private permissionsService : NgxPermissionsService,
+    private socket : Socket) { }
 
   async populate() {
     if (this.getToken()) {
@@ -51,6 +52,7 @@ export class UserService {
     if(token){
       this.saveToken(token);      
     }
+    this.socket.emit('user.login', user);
     const permissions = await this.loadPermissions().toPromise();
     this.permissionsService.loadPermissions(permissions);
     this.currentUserSubject.next(user);

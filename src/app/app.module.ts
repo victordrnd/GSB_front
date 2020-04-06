@@ -30,8 +30,9 @@ import { UserEditComponent } from './pages/users/user-edit/user-edit.component';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { TrendModule } from 'ngx-trend';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 registerLocaleData(fr);
-
+const config: SocketIoConfig = { url: environment.socketServer, options: {} };
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ registerLocaleData(fr);
     AngularFireModule.initializeApp(environment.firebase),
     ScrollingModule,
     NgxPermissionsModule.forRoot(),
-    TrendModule
+    TrendModule,
+    SocketIoModule.forRoot(config)
   ],
   entryComponents : [
     UserEditComponent

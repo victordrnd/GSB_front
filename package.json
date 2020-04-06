@@ -25,6 +25,7 @@
     "firebase": "^7.8.2",
     "ng-zorro-antd": "^8.5.2",
     "ngx-permissions": "^7.0.3",
+    "ngx-socket-io": "^3.0.1",
     "ngx-trend": "^5.0.0",
     "pdfmake": "^0.1.65",
     "rxjs": "~6.4.0",

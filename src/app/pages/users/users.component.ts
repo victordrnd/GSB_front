@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UtilisateurService } from 'src/app/core/services/utilisateur.service';
 import { Router } from '@angular/router';
 import { RoleService } from 'src/app/core/services/role.service';
+import { SocketService } from 'src/app/core/services/socket.service';
+import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-users',
@@ -12,7 +14,10 @@ export class UsersComponent implements OnInit {
 
   constructor(private utilisateurService : UtilisateurService,
     private router : Router,
-    private roleService : RoleService) { }
+    private roleService : RoleService,
+    private socketService : SocketService,
+    private socket : Socket
+    ) { }
 
   filters = {
     keyword : null,
@@ -20,7 +25,10 @@ export class UsersComponent implements OnInit {
   }
   roles;
   users : Array<any>;
+  activeUserIds = [];
   async ngOnInit() {
+    this.socket.emit('users.connected', null, (activeUsers) =>  this.activeUserIds = activeUsers);
+    this.socketService.activeUsers.subscribe(activeUsers => this.activeUserIds = activeUsers);
     this.users = await this.utilisateurService.getAllUsers(this.filters).toPromise();
     this.roles = await this.roleService.getAllRoles().toPromise()
   }
