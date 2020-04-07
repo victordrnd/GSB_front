@@ -17,7 +17,8 @@ export class FraisComponent implements OnInit {
   filters = {
     type_id : null,
     dateRange : [],
-    user_id : null
+    user_id : null,
+    order_by : null
   }
   async ngOnInit() {
     this.getFrais();

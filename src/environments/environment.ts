@@ -6,8 +6,8 @@ export const environment = {
   production: false,
   apiurl : "http://localhost:8000/api",
   localUrl : "http://localhost:4200",
-  assetsUrl : "http://localhost:8000/storage/images/",
-  socketServer : "http://localhost:4444",
+  assetsUrl : "http://localhost:8000/storage/images/", 
+  socketServer : "https://gsb-socket.azurewebsites.net",
   firebase: {
     apiKey: "AIzaSyArEc4pfVdzPuZQsEPMBUJXhmTom0_tLgw",
     authDomain: "gsb-laboratoire.firebaseapp.com",

@@ -4,6 +4,8 @@ import { UtilisateurService } from 'src/app/core/services/utilisateur.service';
 import { NzModalService, NzNotificationService } from 'ng-zorro-antd';
 import { UserEditComponent } from '../user-edit/user-edit.component';
 import { PdfService } from 'src/app/core/services/pdf.service';
+import { SocketService } from 'src/app/core/services/socket.service';
+import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-user-details',
@@ -17,7 +19,9 @@ export class UserDetailsComponent implements OnInit {
     private modalService : NzModalService,
     private notificationService : NzNotificationService,
     private router : Router,
-    private pdfService : PdfService) { }
+    private pdfService : PdfService,
+    private socketService : SocketService,
+    private socket : Socket) { }
 
   user;
   exportFrais = {
@@ -26,6 +30,10 @@ export class UserDetailsComponent implements OnInit {
   async ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
     this.user = await this.userService.getUser(id).toPromise();
+    this.socket.emit('users.connected', null, (activeUsers) =>  this.user.active = activeUsers.indexOf(this.user.id) !== -1);
+    this.socketService.activeUsers.subscribe(activeUsers => {
+      this.user.active = activeUsers.indexOf(this.user.id) !== -1;
+    });
   }
 
   getAvatarLetter(){

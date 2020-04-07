@@ -27,10 +27,13 @@ export class UsersComponent implements OnInit {
   users : Array<any>;
   activeUserIds = [];
   async ngOnInit() {
-    this.socket.emit('users.connected', null, (activeUsers) =>  this.activeUserIds = activeUsers);
-    this.socketService.activeUsers.subscribe(activeUsers => this.activeUserIds = activeUsers);
-    this.users = await this.utilisateurService.getAllUsers(this.filters).toPromise();
+    this.getUsers();
     this.roles = await this.roleService.getAllRoles().toPromise()
+    this.socket.emit('users.connected', null, (activeUsers) =>  this.activeUserIds = activeUsers);
+    this.socketService.activeUsers.subscribe(activeUsers => {
+      this.activeUserIds = activeUsers;
+      this.getUsers();
+    });
   }
 
   async getUsers(){

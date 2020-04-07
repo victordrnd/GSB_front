@@ -31,7 +31,7 @@ export class ActivityListComponent implements OnInit, OnDestroy {
 
 
   getAvatarLetter(item){
-    if(item.causer){
+    if(item.causer && item.subject_type == 'frais'){
       return item.causer.firstname.substring(0,1) + item.causer.lastname.substring(0,1)
     }else{
       return item.subject.firstname.substring(0,1) + item.subject.lastname.substring(0,1)

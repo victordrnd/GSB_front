@@ -2,10 +2,10 @@
 <div class="px-5 mt-4">
     <div class="float-right">
         Recevoir les notifications <nz-switch nzSize="small" class="ml-2" [ngModel]="true"></nz-switch>
-        <nz-select nzAllowClear nzPlaceHolder="Trier par" class="ml-2">
-            <nz-option nzValue="jack" nzLabel="Date"></nz-option>
-            <nz-option nzValue="lucy" nzLabel="Montant"></nz-option>
-            <nz-option nzValue="disabled" nzLabel="Type"></nz-option>
+        <nz-select nzAllowClear nzPlaceHolder="Trier par" class="ml-2" [(ngModel)]="filters.order_by" (ngModelChange)="getFrais()">
+            <nz-option nzValue="created_at" nzLabel="Date"></nz-option>
+            <nz-option nzValue="montant" nzLabel="Montant"></nz-option>
+            <nz-option nzValue="type_id" nzLabel="Type"></nz-option>
           </nz-select>
         <button nz-button nzType="default" class="ml-2 border-0"><i nz-icon nzType="bars" nzTheme="outline" style="display:table !important"></i></button>
     </div>

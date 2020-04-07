@@ -5,6 +5,7 @@ import { StatusService } from 'src/app/core/services/status.service';
 import { NzNotificationService } from 'ng-zorro-antd';
 import {environment} from "../../../../environments/environment";
 import Viewer from 'viewerjs';
+import { Socket } from 'ngx-socket-io';
 @Component({
   selector: 'app-frais-detail',
   templateUrl: './frais-detail.component.html',
@@ -15,7 +16,8 @@ export class FraisDetailComponent implements OnInit {
   constructor(private route : ActivatedRoute,
     private fraisService:  FraisService,
     private statusService : StatusService,
-    private notificationService : NzNotificationService) { }
+    private notificationService : NzNotificationService,
+    private socket : Socket) { }
 
 
   environement = environment;
@@ -39,6 +41,7 @@ export class FraisDetailComponent implements OnInit {
 
   async onSubmit(){
     this.frais = await this.fraisService.update(this.frais).toPromise();
+    this.socket.emit('frais.status_change', {});
     this.notificationService.success("Succès", "Le statut du frais a été modifié")
   }
 
