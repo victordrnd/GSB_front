@@ -5,7 +5,10 @@
   "build": {
     "directories": {
     "output": "release/"
-    }
+    },
+    "appId": "com.gsb.macos",
+    "icon" : "icons/mac/icon.icns",
+    "productName" :"Galaxy-Swiss Bourdin"
   },
   "scripts": {
     "ng": "ng",
@@ -15,7 +18,10 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "electron" : "electron .",
-    "build-electron" : "ng build --prod && electron ."
+    "build-electron" : "ng build --prod && electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
   },
   "private": true,
   "dependencies": {

@@ -24,7 +24,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.getData();
     this._fraisSub = this.socketService.newFraisEvent.subscribe(ev => {
       this.getData();
-    })
+      console.log(ev);
+      new Notification('Nouveau frais', {
+        body: 'Un nouveau frais a été crée'
+      })
+    });
+
+    this.socketService.fraisStatusChanged.subscribe(ev => {
+      this.getData();
+    });
   }
 
 

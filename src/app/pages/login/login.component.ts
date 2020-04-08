@@ -18,9 +18,12 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private notificationService: NzNotificationService,
     private messagingService: NotificationService,
-    private ngZone : NgZone) { }
+    private ngZone: NgZone) { }
 
   ngOnInit() {
+    if(this.userService.populate()){
+      this.router.navigate(['dashboard']);
+    };
     this.form = this.fb.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required]],
@@ -35,23 +38,34 @@ export class LoginComponent implements OnInit {
         web_fcm_token: token
       }
       this.userService.attemptAuth(obj).subscribe((res) => {
-         this.messagingService.receiveMessage();
-         if(res.user.role.niveau > 1){
-           this.ngZone.run(() => this.router.navigateByUrl('/dashboard'));
-         }else{
-           this.userService.purgeAuth();
-           this.notificationService.error('Accès réservé', "Vous n'avez pas accès à cet espace d'administration");
-         }
-         //this.redirectToDashBoard();
+        this.messagingService.receiveMessage();
+        if (res.user.role.niveau > 1) {
+          this.ngZone.run(() => this.router.navigateByUrl('/dashboard'));
+        } else {
+          this.userService.purgeAuth();
+          this.notificationService.error('Accès réservé', "Vous n'avez pas accès à cet espace d'administration");
+        }
+        //this.redirectToDashBoard();
       },
-      err => this.notificationService.error("Identifiants incorrects", "Les identifiants saisis ne correspondent à aucun compte.")
+        err => this.notificationService.error("Identifiants incorrects", "Les identifiants saisis ne correspondent à aucun compte.")
       )
-    }, err => console.log(err))
+    }, err => {
+      this.userService.attemptAuth(this.form.value).subscribe((res) => {
+        this.messagingService.receiveMessage();
+        if (res.user.role.niveau > 1) {
+          this.ngZone.run(() => this.router.navigateByUrl('/dashboard'));
+        } else {
+          this.userService.purgeAuth();
+          this.notificationService.error('Accès réservé', "Vous n'avez pas accès à cet espace d'administration");
+        }
 
-
+        //this.redirectToDashBoard();
+      },
+        err => this.notificationService.error("Identifiants incorrects", "Les identifiants saisis ne correspondent à aucun compte."))
+    })
   }
 
-  redirectToDashBoard(){
-    
+  redirectToDashBoard() {
+
   }
 }
