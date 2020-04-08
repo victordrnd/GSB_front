@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-4">
+        <div class="card bg-white shadow-sm border-0 rounded mx-3 pb-4 mt-3" style="min-height:85vh" *ngIf="user">
+            <div class="role">
+                <div class="rounded-lg badge py-2 px-3 mt-4 float-right mr-4" [ngClass]="{'badge-active' : user?.active, 'badge-inactive' : !user?.active}">
+                    <nz-badge [nzColor]="user?.active ? '#0dc2a2' : '#cc3d49'"></nz-badge>
+                    {{user?.role?.libelle}}
+                </div>
+            </div>
+            <div class="avatar mt-3">
+                <nz-avatar [nzShape]="'square'" [nzSize]="90" [nzText]="getAvatarLetter()" class="mx-auto d-block">
+                </nz-avatar>
+            </div>
+            <div class="content p-3">
+                <h5 class="text-center font-weight-bold">{{user.firstname}} {{user.lastname}}</h5>
+                <p class="text-center"><i class="feather icon-map-pin"></i> Lyon, FR
+                    <nz-badge nzColor="#5f5f5f" class="ml-2"></nz-badge> Depuis {{user.created_at | date:'MMM yyyy'}}
+                </p>
+                <button *ngxPermissionsOnly="'users.edit'" nz-button nzType="primary" class="mx-4" style="width:91%"
+                    (click)="editUser()">Editer
+                    l'utilisateur <i class="feather icon-edit-2"></i></button>
+                <p class="text-muted text-center mt-4"><i class="feather icon-flag"></i> Signaler cet utilisateur</p>
+                <nz-divider class="mt-5"></nz-divider>
+                <div class="row my-5">
+                    <div class="col-6">
+                        <div class="text-center">
+                            <i nz-icon nzType="fire" nzTheme="twotone" nzTwotoneColor="#9b89ff" class="h2"></i>
+                            <h6 class="font-weight-bold mb-0">{{user.frais_count}}</h6>
+                            <p class="mt-0">Demande de frais</p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="text-center">
+                            <i nz-icon nzType="dollar" nzTheme="twotone" nzTwotoneColor="#9b89ff" class="h2"></i>
+                            <h6 class="font-weight-bold mb-0">{{user.frais_amount | currency:'EUR'}}</h6>
+                            <p class="mt-0">Montant total</p>
+                        </div>
+                    </div>
+                    <div class="col-6 mt-5">
+                        <div class="text-center">
+                            <i nz-icon nzType="dashboard" nzTheme="twotone" nzTwotoneColor="#9b89ff" class="h2"></i>
+                            <h6 class="font-weight-bold mb-0">{{user.frais_success | number:'1.0-2'}}%</h6>
+                            <p class="mt-0">Taux de succès</p>
+                        </div>
+                    </div>
+                    <div class="col-6 mt-5">
+                        <div class="text-center">
+                            <i nz-icon nzType="bell" nzTheme="twotone" nzTwotoneColor="#9b89ff" class="h2"></i>
+                            <h6 class="font-weight-bold mb-0">{{user.groups_count}}</h6>
+                            <p class="mt-0">Groupes adhérés</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="float-right mx-4">
+                <button *ngxPermissionsOnly="'users.delete'" nz-button nzType="danger" (nzOnConfirm)="deleteUser()"
+                    nz-popconfirm nzPopconfirmTitle="Voulez vous vraiment supprimer cet utilisateur ?"
+                    class="float-right" [nzSize]="'small'" nzShape="round">
+                    Supprimer
+                </button>
+            </div>
+            <!-- <button nz-button nzType="primary" class="mx-4" (click)="showDetails(user)">Afficher le profil</button> -->
+        </div>
+    </div>
+    <div class="col">
+        <div class="bg-white rounded shadow-sm w-100 p-3 mt-3">
+            <h6>Générer un export </h6>
+            <nz-form-label [nzSpan]="null" class="mr-4">Période</nz-form-label>
+            <nz-range-picker [(ngModel)]="exportFrais.dateRange" (ngModelChange)="onDateRangeChange($event)"
+                name="daterange"></nz-range-picker>
+            <button nz-button nzType="primary" class="float-right" (click)="export()">Exporter</button>
+        </div>
+        <hr/>
+        <app-user-activity-list *ngIf="user" [activities]="user.activities"></app-user-activity-list>
+    </div>
+</div>

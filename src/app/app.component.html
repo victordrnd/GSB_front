@@ -1,4 +1,18 @@
-<!-- NG-ZORRO -->
-<a href="https://github.com/NG-ZORRO/ng-zorro-antd" target="_blank" style="display: flex;align-items: center;justify-content: center;height: 100%;width: 100%;">
-  <img height="300" src="https://img.alicdn.com/tfs/TB1X.qJJgHqK1RjSZFgXXa7JXXa-89-131.svg">
-</a>
+<nz-layout class="top-container">
+    <nz-sider>
+        <app-sidebar></app-sidebar>
+    </nz-sider>
+    <nz-layout>
+        <div class="mx-5">
+            <app-header></app-header>
+        </div>
+        <nz-content>
+            <div class="m-5">
+                <router-outlet></router-outlet>
+            </div>
+            <div class="spinner">
+                <app-spin></app-spin>
+            </div>
+        </nz-content>
+    </nz-layout>
+</nz-layout>

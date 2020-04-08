@@ -1,0 +1,24 @@
+
+image: weboaks/node-karma-protractor-chrome
+before_script:
+- npm install
+- curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+- apt-get update -qq && apt-get install -y -qq sshpass
+cache:
+  paths:
+    - node_modules/
+
+deploy_stage:
+  stage: deploy
+  environment: Stage
+  only:
+    - master
+  script:
+    - sh generateProdEnv.sh
+    - more ./src/environments/environment.prod.ts
+    - npm run build
+    - cd dist/
+    - ls
+    - sshpass -V
+    - export SSHPASS=$USER_PASS 
+    - sshpass -e scp -o stricthostkeychecking=no -r $PWD/* victor@$USER_HOST:$TARGET_PATH

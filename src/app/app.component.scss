@@ -1,0 +1,19 @@
+.ant-layout-sider {
+    flex: 0 0 70 !important;
+    max-width: 70px!important;
+    min-width: 70px!important;
+    width: 70px!important;
+    //background-color: #daebff;
+    background-color: #ecedef;
+}
+
+.top-container{
+    min-height: 100vh;
+}
+
+.spinner{
+    position: fixed;
+    bottom : 20px;
+    right: 20px;
+    z-index:99;
+}

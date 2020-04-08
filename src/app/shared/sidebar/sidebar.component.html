@@ -1,0 +1,34 @@
+<div class="menu">
+
+<div class="top-menu " *ngIf="!isAuthRoute()">
+    <img src="../../../assets/logo.png" width="40" class="d-block mx-auto pt-5" />
+</div>
+<ul nz-menu nzMode="inline" *ngIf="!isAuthRoute()">
+    <li nz-menu-item nzIcon="test"></li>
+    <li nz-menu-item routerLink="/dashboard" nzIcon="home"><i class="feather icon-inbox"></i></li>
+    <li nz-menu-item *ngxPermissionsOnly="'frais.view'" routerLink="/frais" nzIcon="home"><i
+            class="feather icon-clipboard"></i></li>
+    <li nz-menu-item *ngxPermissionsOnly="'users.view'" routerLink="/users" nzIcon="home"><i
+            class="feather icon-users"></i></li>
+    <li nz-menu-item *ngxPermissionsOnly="'permissions.edit'" routerLink="/settings" nzIcon="home"><i class="feather icon-settings"></i></li>
+    <li nz-menu-item nzIcon="test"></li>
+</ul>
+</div>
+
+<nz-dropdown-menu #menu >
+    <ul nz-menu class="dropown-custom">
+        <li nz-menu-item (click)="logout()"> <i nz-icon nzType="poweroff" nzTheme="outline"></i> Déconnexion</li>
+        <li nz-menu-item>A venir</li>
+        <li nz-menu-item>A venir</li>
+    </ul>
+</nz-dropdown-menu>
+<div class="bottom-menu" *ngIf="!isAuthRoute()">
+    <div class="pt-5"   >
+        <a nz-dropdown [nzDropdownMenu]="menu">
+            <nz-badge nzDot class="d-block mx-auto" style="margin-top:20vh;">
+                <nz-avatar [nzText]="user?.firstname?.charAt(0) + user?.lastname?.charAt(0)" style="color:#9b89ff; background-color:#ffffff;" class="d-block mx-auto">
+                </nz-avatar>
+            </nz-badge>
+        </a>
+    </div>
+</div>

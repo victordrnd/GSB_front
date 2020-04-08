@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-12 px-4">
+        <div class="bg-white rounded mx-3">
+            <nz-card nzTitle="Filtres" [nzExtra]="extraTemplate">
+                <div class="row">
+                    <div class="col-3">
+                        <nz-select nzShowSearch class="w-100" [(ngModel)]="filters.user_id" (ngModelChange)="submit()"  nzAllowClear nzPlaceHolder="Rechercher par utilisateur">
+                            <nz-option *ngFor="let user of users" [nzLabel]="user.fullname" [nzValue]="user.id"></nz-option>
+                          </nz-select>
+                    </div>
+                    <div class="col-3">
+                        <nz-range-picker [(ngModel)]="filters.dateRange" (ngModelChange)="onDateRangeChange($event)" name="daterange" ></nz-range-picker>
+                    </div>
+                    <div class="col-3">
+                        <nz-select nzShowSearch class="w-100" [(ngModel)]="filters.type_id" (ngModelChange)="submit()"  nzAllowClear nzPlaceHolder="Rechercher par type">
+                            <nz-option *ngFor="let type of types" [nzLabel]="type.libelle" [nzValue]="type.id"></nz-option>
+                          </nz-select>
+                    </div>
+                </div>
+            </nz-card>
+            <ng-template #extraTemplate>
+                <a><i nz-icon nzType="arrow-down" nzTheme="outline"></i></a>
+            </ng-template>
+        </div>
+    </div>
+</div>

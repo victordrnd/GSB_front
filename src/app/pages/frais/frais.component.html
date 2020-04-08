@@ -1,0 +1,47 @@
+<app-frais-filter [(ngModel)]="filters" (change)="getFrais()"></app-frais-filter>
+<div class="px-5 mt-4">
+    <div class="float-right">
+        Recevoir les notifications <nz-switch nzSize="small" class="ml-2" [ngModel]="true"></nz-switch>
+        <nz-select nzAllowClear nzPlaceHolder="Trier par" class="ml-2" [(ngModel)]="filters.order_by" (ngModelChange)="getFrais()">
+            <nz-option nzValue="created_at" nzLabel="Date"></nz-option>
+            <nz-option nzValue="montant" nzLabel="Montant"></nz-option>
+            <nz-option nzValue="type_id" nzLabel="Type"></nz-option>
+          </nz-select>
+        <button nz-button nzType="default" class="ml-2 border-0"><i nz-icon nzType="bars" nzTheme="outline" style="display:table !important"></i></button>
+    </div>
+    <h2>Demandes de frais</h2>
+    <div class="row">
+        <nz-list class="demo-loadmore-list w-100" [nzDataSource]="listFrais" [nzItemLayout]="'horizontal'"
+             [nzRenderItem]="item">
+            <ng-template #item let-frais>
+                <nz-list-item class="bg-white mt-4 p-3" (click)="showFrais(frais.id)">
+                    <nz-skeleton [nzAvatar]="true" [nzActive]="true" [nzTitle]="false" [nzLoading]="false">
+                        <nz-list-item-meta [nzTitle]="nzTitle"
+                            [nzAvatar]="avatar"
+                            [nzDescription]="content">
+                            <ng-template #nzTitle>
+                                <a class="font-weight-bold">Demande de frais n°{{frais.id}} de {{frais.user.firstname}} {{frais.user.lastname}}</a>
+                            </ng-template> 
+                            <ng-template #content>
+                                Montant : {{frais.montant | currency : 'EUR'}} 
+                                <nz-divider nzType="vertical"></nz-divider>
+                                <nz-tag [nzColor]="frais.status.color">{{frais.status.libelle}}</nz-tag>
+                                <nz-divider nzType="vertical"></nz-divider>
+                                Catégorie : {{frais.type.libelle}}
+                                <div class="float-right" nz-popover nzPopoverContent="{{frais.created_at | date:'medium'}}">
+                                    {{frais.last_update}}
+                                </div>
+                            </ng-template>
+                            <ng-template #avatar>
+                                <nz-avatar [nzText]="getAvatarLetter(frais)"></nz-avatar>
+                            </ng-template> 
+                        </nz-list-item-meta>
+                    </nz-skeleton>
+                </nz-list-item>
+            </ng-template>
+            
+        </nz-list>
+    </div>
+
+
+</div>

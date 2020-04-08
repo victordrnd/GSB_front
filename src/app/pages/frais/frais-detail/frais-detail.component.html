@@ -1,0 +1,45 @@
+<h2>Détail du frais</h2>
+<div class="row">
+    <div class="col-8">
+        <nz-descriptions  class="rounded shadow-sm p-3 bg-white" nzTitle="Détails du frais" nzBordered nzLayout="vertical">
+            <nz-descriptions-item nzTitle="Référence">n°{{frais?.id}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Montant">{{frais?.montant | currency : 'EUR'}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Catégorie">{{frais?.type.libelle}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Heure de création">
+              {{frais?.created_at | date : 'medium'}}
+            </nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Durée depuis création" [nzSpan]="2">
+              {{frais?.last_update}}
+            </nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Statut" [nzSpan]="3">
+                <nz-tag [nzColor]="frais?.status.color">{{frais?.status?.libelle}}</nz-tag>
+            </nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Salarié">{{frais?.user?.firstname}} {{frais?.user?.lastname}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Administré par" [nzSpan]="2">{{frais?.validated_by?.firstname}} {{frais?.validated_by?.lastname}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Description" [nzSpan]="3">
+              <br />
+              <nz-comment [nzAuthor]="frais?.user?.firstname + ' ' + frais?.user?.lastname" [nzDatetime]="frais?.last_updated">
+                <nz-avatar  nz-comment-avatar [nzText]="getAvatarLetter(frais)"></nz-avatar>
+                <nz-comment-content>
+                  <p>{{frais?.description}}</p>
+                  <img *ngIf="frais" (click)="openImage()" src="{{environement.assetsUrl}}{{frais?.photo_url}}" class="mx-auto d-block border-0" style="max-height:90vh;max-width:100%" id="image">
+                </nz-comment-content>
+              </nz-comment>
+              
+            </nz-descriptions-item>
+          </nz-descriptions>
+    </div>
+    <div class="col">
+      <div class="bg-white rounded shadow-sm p-3" *ngxPermissionsOnly="'frais.edit-status'">
+        <h6 class="font-weight-bold">Modifier le statut</h6>
+        <p nz-text nzType="secondary">
+           Toute validation est définitive et ne pourra pas être modifiée</p> 
+        <nz-select *ngIf="status && frais" [(ngModel)]="frais.status_id" 
+        >
+        <!-- [nzDisabled]="frais?.status?.libelle != 'En attente' " -->
+          <nz-option *ngFor="let statu of status" [nzValue]="statu.id" [nzLabel]="statu.libelle"></nz-option>
+        </nz-select>
+
+        <button nz-button nzType="primary"  class="mt-4" (click)="onSubmit()" nzBlock>Confirmer <i nz-icon nzType="check" nzTheme="outline"></i></button>
+    </div>
+</div>

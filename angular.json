@@ -26,6 +26,8 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
+              "src/firebase-messaging-sw.js",
+              "src/manifest.json",
               {
                 "glob": "**/*",
                 "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
@@ -34,9 +36,12 @@
             ],
             "styles": [
               "src/theme.less",
-              "src/styles.scss"
+              "src/styles.scss",
+              "./node_modules/viewerjs/src/css/viewer.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/viewerjs/src/js/viewer.js"
+            ]
           },
           "configurations": {
             "production": {
