@@ -17,8 +17,8 @@ jobs:
     - name: Build and Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v2
       env:
-        ACCESS_TOKEN: ${{ secrets.deployement_key }}
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BASE_BRANCH: master
         BRANCH: gh-pages
-        FOLDER: dist/GSBfront
+        FOLDER: dist/GSBFront
         BUILD_SCRIPT: npm install && npm run build -- --prod
