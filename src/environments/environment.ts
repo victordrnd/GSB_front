@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  apiurl : "http://gsb-back-server.victordurand.fr/api",
-  localUrl : "http://gsb.victordurand.fr",
-  assetsUrl : "http://gsb-back-server.victordurand.fr/storage/images/", 
+  apiurl : "https://gsb-back-server.victordurand.fr/api",
+  localUrl : "https://gsb.victordurand.fr",
+  assetsUrl : "https://gsb-back-server.victordurand.fr/storage/images/", 
   socketServer : "https://gsb-socket-server.victordurand.fr/",//"https://gsb-socket-server.azurewebsites.net",
   firebase: {
     apiKey: "AIzaSyArEc4pfVdzPuZQsEPMBUJXhmTom0_tLgw",

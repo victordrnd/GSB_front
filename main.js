@@ -8,11 +8,11 @@ function createWindow() {
     const size = screen.getPrimaryDisplay().workAreaSize;
 
     const image = nativeImage.createFromPath(
-        app.getAppPath() + "/icons/mac/icon.icns"
+        app.getAppPath() + "/icons/png/1024x1024.png"
     );
-    app.dock.setIcon(image);
+    //app.dock.setIcon(image);
     const iconUrl = url.format({
-        pathname: path.join(__dirname, 'icons/mac/icon.icns'),
+        pathname: path.join(__dirname, 'icons/png/1024x1024.png'),
         protocol: 'file:',
         slashes: true
     });
