@@ -21,6 +21,7 @@
     "build-electron" : "ng build --prod && electron .",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
+    "dist-windows": "electron-builder -w",
     "postinstall": "electron-builder install-app-deps"
   },
   "private": true,
