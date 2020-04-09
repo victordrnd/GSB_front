@@ -21,4 +21,4 @@ jobs:
         BASE_BRANCH: master
         BRANCH: gh-pages
         FOLDER: dist/GSBFront
-        BUILD_SCRIPT: npm install && npm run build -- --prod
+        BUILD_SCRIPT: npm install && npm run build -- --prod && echo "gsb.victordurand.fr" >> dist/GSBFront/CNAME
