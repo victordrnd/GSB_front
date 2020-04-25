@@ -7,7 +7,7 @@ export const environment = {
   apiurl : "http://localhost:8000/api",
   localUrl : "https://gsb.victordurand.fr",
   assetsUrl : "https://gsbbackstorage.blob.core.windows.net/gsbback/", 
-  socketServer : "https://gsb-socket-server.victordurand.fr/",//"https://gsb-socket-server.azurewebsites.net",
+  socketServer : "https://gsb-socket-server.herokuapp.com/",//"https://gsb-socket-server.azurewebsites.net",
   firebase: {
     apiKey: "AIzaSyArEc4pfVdzPuZQsEPMBUJXhmTom0_tLgw",
     authDomain: "gsb-laboratoire.firebaseapp.com",

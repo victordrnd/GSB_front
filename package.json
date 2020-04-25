@@ -4,11 +4,11 @@
   "main": "main.js",
   "build": {
     "directories": {
-    "output": "release/"
+      "output": "release/"
     },
     "appId": "com.gsb.macos",
-    "icon" : "icons/mac/icon.icns",
-    "productName" :"Galaxy-Swiss Bourdin"
+    "icon": "icons/mac/icon.icns",
+    "productName": "Galaxy-Swiss Bourdin"
   },
   "scripts": {
     "ng": "ng",
@@ -17,8 +17,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "electron" : "electron .",
-    "build-electron" : "ng build --prod && electron .",
+    "electron": "electron .",
+    "build-electron": "ng build --prod && electron .",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "dist-windows": "electron-builder -w",
@@ -35,28 +35,28 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
-    "@swimlane/ngx-charts": "^13.0.2",
+    "@swimlane/ngx-charts": "^13.0.4",
     "chart.js": "^2.9.3",
-    "firebase": "^7.8.2",
+    "firebase": "^7.14.2",
     "ng-zorro-antd": "^8.5.2",
     "ngx-permissions": "^7.0.3",
     "ngx-socket-io": "^3.0.1",
-    "ngx-trend": "^5.0.0",
+    "ngx-trend": "^5.0.1",
     "pdfmake": "^0.1.65",
     "rxjs": "~6.4.0",
-    "tslib": "^1.10.0",
+    "tslib": "^1.11.1",
     "viewerjs": "^1.5.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.803.20",
-    "@angular/cli": "~8.3.20",
+    "@angular-devkit/build-angular": "^0.803.26",
+    "@angular/cli": "^8.3.26",
     "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.14",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "^13.9.0",
-    "codelyzer": "^5.0.0",
+    "@types/node": "^13.13.2",
+    "codelyzer": "^5.2.2",
     "electron": "^8.2.1",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -64,8 +64,8 @@
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
-    "karma-jasmine-html-reporter": "^1.4.0",
-    "protractor": "~5.4.0",
+    "karma-jasmine-html-reporter": "^1.5.3",
+    "protractor": "^5.4.4",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
