@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  apiurl : "https://gsb-back-server.victordurand.fr/api",
+  apiurl : "https://gsb-back-server.herokuapp.com/api",
   localUrl : "https://gsb.victordurand.fr",
   assetsUrl : "https://gsbbackstorage.blob.core.windows.net/gsbback/", 
   socketServer : "https://gsb-socket-server.herokuapp.com/",//"https://gsb-socket-server.azurewebsites.net",
